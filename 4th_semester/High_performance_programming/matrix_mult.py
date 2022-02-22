@@ -1,8 +1,8 @@
 from random import randint
-from multiprocessing import Process
-from time import sleep
+from multiprocessing import Process, Array
 
-result:list
+size = 10
+result = Array("i", [0 for i in range(size)])
 
 def multiply_row(index:int, row:list, integer:int) -> int:
     global result
@@ -10,7 +10,7 @@ def multiply_row(index:int, row:list, integer:int) -> int:
     for entry in row:
         final = final + (entry * integer)
     result[index] = final
-    print(f'finished task {index}')
+    print(f'finished task {index} with array {result[:]}')
 
 
 def algorithm(array:list[list], vector:list):
@@ -18,12 +18,8 @@ def algorithm(array:list[list], vector:list):
         row = array[i]
         Process(target=lambda: multiply_row(i, row, vector[i])).start()
 
-size = 4
-result = [i for i in range(size)]
 array = [[randint(0,100) for i in range(size)] for i in range(size)]
 
 vector = [randint(0, 100) for i in range(size)]
 
 algorithm(array, vector)
-sleep(1)
-print(result)
