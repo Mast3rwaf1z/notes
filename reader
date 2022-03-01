@@ -3,6 +3,7 @@
 #python script to display files
 
 import tkinter as tk
+from tkinter.ttk import Style
 from markdown2 import Markdown
 from tkhtmlview import HTMLLabel
 from os import listdir, path
@@ -10,7 +11,7 @@ from os import listdir, path
 current_index = 0
 
 def getListOfFiles(dirName):
-    #https://thispointer.com/python-how-to-get-list-of-files-in-directory-and-sub-directories/
+    # https://thispointer.com/python-how-to-get-list-of-files-in-directory-and-sub-directories/
     # create a list of file and sub directories 
     # names in the given directory 
     listOfFile = listdir(dirName)
@@ -29,6 +30,7 @@ def getListOfFiles(dirName):
 
 
 files = getListOfFiles("./4th_semester")
+files.reverse()
 
 content = []
 md_files:list[str] = []
@@ -44,30 +46,54 @@ def next(label:HTMLLabel):
         current_index = current_index + 1
     else:
         current_index = 0
-    print(current_index)
     label.set_html(md2html.convert(content[current_index]))
 
-def set_specific(label:HTMLLabel, file):
-    with open(file) as file:
-        label.set_html(md2html.convert(file.read()))
+def previous(label:HTMLLabel):
+    global current_index
+    if not current_index == 0:
+        current_index = current_index - 1
+    else:
+        current_index = len(content) - 1
+    label.set_html(md2html.convert(content[current_index]))
+
 
 main = tk.Tk()
+style = Style(main)
+style.theme_use("breeze-dark")
 md2html = Markdown()
 html = HTMLLabel(main, width=100, height=50)
 html.pack(side="left")
 html.set_html(md2html.convert(content[0]))
-button = tk.Button(text="Next", command=lambda: next(html))
+next_prev_frame = tk.Frame(main)
+prev_button = tk.Button(next_prev_frame, text="Previous", command=lambda: previous(html))
+prev_button.pack(side="left")
+next_button = tk.Button(next_prev_frame, text="Next", command=lambda: next(html))
+next_button.pack(side="left")
+next_prev_frame.pack(side="bottom")
+
+
+
+class specific():
+    def __init__(self, index):
+        self.index = index
+
+    def set_specific(self):
+        file = md_files[self.index]
+        with open(file) as file:
+            html.set_html(md2html.convert(file.read()))
+
 
 
 # specific files
-print(len(md_files))
 button_frame = tk.Frame(main)
 button_frame.pack(side="right")
+buttons = []
 for i in range(len(md_files)):
+    obj = specific(i)
     split_string = md_files[i].split("/")
-    title = split_string[len(split_string) - 1]
-    tk.Button(button_frame, text=title, command=lambda: set_specific(html, md_files[i])).pack(side="top")
+    title =split_string[len(split_string) - 2] + "/" + split_string[len(split_string) - 1]
+    buttons.append(tk.Button(button_frame, text=title, command=obj.set_specific, width=40))
+    buttons[i].pack(side="top")
 
-button.pack(side="bottom")
 
 main.mainloop()

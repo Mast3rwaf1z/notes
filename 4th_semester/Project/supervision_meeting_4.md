@@ -18,3 +18,29 @@
         *   Mixed geometry
     *   Satellite communication
         *   Issues with interlink
+    *   How useful are satellites
+    
+*   Disasters
+    *   Floods: 3/5
+    *   Volcano: 2.25/5
+    *   Oil spill: 4/5
+    *   Forest fire: 5/5
+    *   Tsunami: 2/5
+    *   Storms: 2/5
+
+*   Forest fires
+    *   Pre:
+        *   monitoring humidity
+        *   monitoring droughts
+    *   During:
+        *   spreading
+    *   Post:
+        *   is the fire still not spreading
+    
+    *   maybe make some severity index and base the stage of the disaster based on this
+
+## Meeting
+*   don't pick multiple disasters to work with
+*   argumentation is fine, but we don't get any points from implementing multiple
+*   make requirements based on the product
+*   
