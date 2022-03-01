@@ -1,0 +1,73 @@
+#!/bin/python3
+
+#python script to display files
+
+import tkinter as tk
+from markdown2 import Markdown
+from tkhtmlview import HTMLLabel
+from os import listdir, path
+
+current_index = 0
+
+def getListOfFiles(dirName):
+    #https://thispointer.com/python-how-to-get-list-of-files-in-directory-and-sub-directories/
+    # create a list of file and sub directories 
+    # names in the given directory 
+    listOfFile = listdir(dirName)
+    allFiles:list[str] = []
+    # Iterate over all the entries
+    for entry in listOfFile:
+        # Create full path
+        fullPath:str = path.join(dirName, entry)
+        # If entry is a directory then get the list of files in this directory 
+        if path.isdir(fullPath):
+            allFiles = allFiles + getListOfFiles(fullPath)
+        else:
+            allFiles.append(fullPath)
+                
+    return allFiles
+
+
+files = getListOfFiles("./4th_semester")
+
+content = []
+md_files:list[str] = []
+for file in files:
+    if not file.find(".md") == -1:
+        md_files.append(file)
+        with open(file) as file:
+            content.append(file.read())
+
+def next(label:HTMLLabel):
+    global current_index
+    if not len(content) == current_index + 1:
+        current_index = current_index + 1
+    else:
+        current_index = 0
+    print(current_index)
+    label.set_html(md2html.convert(content[current_index]))
+
+def set_specific(label:HTMLLabel, file):
+    with open(file) as file:
+        label.set_html(md2html.convert(file.read()))
+
+main = tk.Tk()
+md2html = Markdown()
+html = HTMLLabel(main, width=100, height=50)
+html.pack(side="left")
+html.set_html(md2html.convert(content[0]))
+button = tk.Button(text="Next", command=lambda: next(html))
+
+
+# specific files
+print(len(md_files))
+button_frame = tk.Frame(main)
+button_frame.pack(side="right")
+for i in range(len(md_files)):
+    split_string = md_files[i].split("/")
+    title = split_string[len(split_string) - 1]
+    tk.Button(button_frame, text=title, command=lambda: set_specific(html, md_files[i])).pack(side="top")
+
+button.pack(side="bottom")
+
+main.mainloop()
