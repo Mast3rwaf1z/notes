@@ -1,7 +1,4 @@
-import parallel_random_set
-import sequential_random_set
-import jit_random_set
-from sys import argv
+
 from os import system
 from random import randint
 
@@ -16,8 +13,17 @@ def gen_csv(elements:int):
             file.write("," + str(numbers[i]))
 
 if __name__ == "__main__":
-    elements = int(argv[1]) #n elements
-    sets = int(argv[2]) #k sets
+    import parallel_random_set
+    import sequential_random_set
+    import jit_random_set
+    from sys import argv
+    if len(argv) == 3:
+        elements = int(argv[1]) #n elements
+        sets = int(argv[2]) #k sets
+    else:
+        elements = 10000
+        sets = 100
+        
     gen_csv(elements)
 
     # read and save the generated csv in memory

@@ -31,8 +31,12 @@ def function(elements:int, sets:int):
 if __name__ == "__main__":
     from sys import argv
     from main import gen_csv
-    elements = int(argv[1]) #n elements
-    sets = int(argv[2]) #k sets
+    if len(argv) == 3:
+        elements = int(argv[1]) #n elements
+        sets = int(argv[2]) #k sets
+    else:
+        elements = 10000
+        sets = 100
 
     gen_csv(elements)
 
