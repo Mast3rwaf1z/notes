@@ -1,7 +1,6 @@
 from math import floor
 from multiprocessing import Process, Array
 from time import perf_counter
-from main import gen_csv
 from random import randint
 
 def gen_set(set_size:int, l:list):
@@ -26,11 +25,12 @@ def function(elements:int, sets:int):
         process.join()
     _post = perf_counter()
     #print(f'remainder: {l}')
-    print(f'parallel time:      {_post - _pre} ms')
+    print(f'parallel time:      {_post - _pre} s')
     return 0, l
 
 if __name__ == "__main__":
     from sys import argv
+    from main import gen_csv
     elements = int(argv[1]) #n elements
     sets = int(argv[2]) #k sets
 

@@ -2,7 +2,6 @@ import numba
 from random import randint
 from time import perf_counter
 from math import floor
-from sequential_random_set import gen_csv
 
 @numba.jit(nopython=True, parallel=True)
 def gen_set(sets:int, set_size:int, l:list[int]):
@@ -11,7 +10,6 @@ def gen_set(sets:int, set_size:int, l:list[int]):
 
 def function(elements:int, sets:int):
     set_size = floor(elements/sets)
-    gen_csv(elements)
 
     # read and save the generated csv in memory
     with open("numbers.csv", "r") as file:
@@ -21,14 +19,16 @@ def function(elements:int, sets:int):
     _pre = perf_counter()
     gen_set(sets, set_size, l)
     _post = perf_counter()
-    print(f'jit time:           {_post - _pre} ms')
+    print(f'jit time:           {_post - _pre} s')
 
 
 
 if __name__ == "__main__":
     from sys import argv
+    from main import gen_csv
     elements = int(argv[1]) #n elements
     sets = int(argv[2]) #k sets
+    gen_csv(elements)
 
     result, remainder = function(elements, sets)
 

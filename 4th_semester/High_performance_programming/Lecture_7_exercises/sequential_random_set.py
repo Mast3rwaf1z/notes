@@ -19,7 +19,7 @@ def function(elements:int, sets:int):
     _post = perf_counter()
 
 
-    print(f'sequential time:    {_post - _pre} ms')
+    print(f'sequential time:    {_post - _pre} s')
     return result
     
 
@@ -33,6 +33,3 @@ if __name__ == "__main__":
     gen_csv(elements)
     
     result = function(elements, sets)
-
-    for set in result:
-        print(set)
