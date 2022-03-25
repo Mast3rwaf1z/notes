@@ -1,7 +1,5 @@
-
 from os import system
 from random import randint
-
 
 
 def gen_csv(elements:int):
@@ -11,7 +9,6 @@ def gen_csv(elements:int):
         file.write(str(numbers[0]))
         for i in range(1, len(numbers)):
             file.write("," + str(numbers[i]))
-
 if __name__ == "__main__":
     import parallel_random_set
     import sequential_random_set
@@ -23,7 +20,7 @@ if __name__ == "__main__":
     else:
         elements = 10000
         sets = 100
-        
+
     gen_csv(elements)
 
     # read and save the generated csv in memory
