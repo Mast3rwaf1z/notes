@@ -29,9 +29,8 @@
 # Question about: General compression [comment from Anders] (ras)
 * we wrote about jpeg before compression
  * introduce general compression first, then the specific compression types
-# susannes question: passive sensors
-* answer: a passive camera just takes the energy from the sun where active sensors send power out from the camera to take the picture
-
+# susannes questions: passive sensors
+* answer: a passive camera just takes the energy from the sun where active sensors send power out from the camera to take the pictur
 # report
 * requirements before design (as always)
 * sequence diagram? like in HPP with distributing tasks?
