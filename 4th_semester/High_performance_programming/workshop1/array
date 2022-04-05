@@ -1,0 +1,2 @@
+size = 1000
+print([[i for i in range(size)] for _ in range(size)])
