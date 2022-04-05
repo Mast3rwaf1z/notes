@@ -27,6 +27,10 @@
 * go for some simple algorithms and try to get them to work with our project
 * algorithm will not be simple to come up with
 # Question about: General compression [comment from Anders] (ras)
+* we wrote about jpeg before compression
+ * introduce general compression first, then the specific compression types
+# susannes question: passive sensors
+* answer: a passive camera just takes the energy from the sun where active sensors send power out from the camera to take the picture
 
 # report
 * requirements before design (as always)
@@ -39,3 +43,4 @@
 * will compression mess with the detection algorithm? (israel)
 * if we do not detect a fire there is no reason to compress
 * each point in the image will be quite large (israel said 32 meters)
+* focus on the image as a matrix
