@@ -1,0 +1,4 @@
+apr 11: 16:40 - 17:40
+made a class SteppingEmulator implementing AsyncEmulator(this made the most sense as i wouldn't have to implement everything unrelated to this feature) and edited exercise_runner to use this class, added the first few class elements for this emulator to work as expected, removed solution to exercises
+
+apr 12: 16:15 - 17:15
