@@ -9,7 +9,4 @@ changed class from input statement to pynput, might wanna add a prompt to instal
 
 apr 16: 15:50 - 17:35
 cleaned the code a bit for the stepping emulator
-started working on GUI, made a wrapper for exercise runner and added some circles to show devicesi
-
-apr 20: 17:00 - 19:00
-created task 2 branch and continued working on gui
+started working on GUI, made a wrapper for exercise runner and added some circles to show devices
