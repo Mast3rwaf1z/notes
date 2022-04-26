@@ -3,6 +3,8 @@ i connected to the git server through ssh with the credentials in the exercise
 
 then i used the `git log` command to go back to the commit with a password
 
+then i rolled back a commit by running `git revert <commit id from log>`
+
 it was in main.go, when using `cat main.go` i could see the flag
 # SSHtay HYDRAted
 i start the exercise with credentials to ssh, and the lead of something called hydra, hydra is some password cracking software
