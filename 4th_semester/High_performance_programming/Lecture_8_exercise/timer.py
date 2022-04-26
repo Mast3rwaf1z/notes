@@ -19,4 +19,4 @@ if __name__ == "__main__":
     def func():
         pass
     
-    print(func())
+    print(func()) 
