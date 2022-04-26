@@ -5,4 +5,14 @@ apr 11: 16:40 - 17:40
 made a class SteppingEmulator implementing AsyncEmulator(this made the most sense as i wouldn't have to implement everything unrelated to this feature) and edited exercise_runner to use this class, added the first few class elements for this emulator to work as expected, removed solution to exercises
 
 apr 12: 15:55 - 16:20
-changed class from input statements to pynput, might wanna add a prompt to install this software? added a little description at init
+changed class from input statement to pynput, might wanna add a prompt to install this software? added a little description at init
+
+apr 16: 15:50 - 17:35
+cleaned the code a bit for the stepping emulator
+started working on GUI, made a wrapper for exercise runner and added some circles to show devices
+
+apr 20: 17:00 - 19:00
+created task 2 branch and continued working on gui
+
+apr 21: 22:30 - 23:30
+looked into weird placement of elements on linux and fixed it (a little badly but it works
