@@ -17,5 +17,8 @@ created task 2 branch and continued working on gui
 apr 21: 22:30 - 23:30
 looked into weird placement of elements on linux and fixed it (a little badly but it works
 
-apr 27: 16:40 - 17:40
+apr 26: 16:40 - 17:40
 moved some stuff into exercise runner to be executed in main thread while the main function of the program is run in a seperate thread, this is because tkinter will not work unless it is running in the main thread
+
+apr 27: 17:00 - 18:00
+more data visualisation
