@@ -22,3 +22,9 @@ moved some stuff into exercise runner to be executed in main thread while the ma
 
 apr 27: 17:00 - 18:00
 more data visualisation
+
+apr 28: 18:50 - 19:50
+moved the creation of device visualisation out from main to easier create these devices, this will also allow for more configurability
+
+apr 29: 18:40 - 20:20
+table and data formatting
