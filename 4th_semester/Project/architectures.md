@@ -20,4 +20,7 @@ https://en.wikipedia.org/wiki/Von_Neumann_architecture
         Some form of mass storage
 
         IO
+        *   A very relevant topic when talking about the von neumann architecture is the von neumann bottleneck, that is the fact that when the CPU needs an instruction it must first address the memory for the instruction, then address the memory again for the data that needs to be used with the instruction. this means that this is impossible to do in parallel as the memory is accessed on two bus'es, the address bus and the data bus. when the 
 *   Harvard
+    *   harvard architecture is structured such that there are two memory units, one for data and one for instructions.
+    *   this is exaggerated when talking about processors with multiple cores because the primary cache for each core is also split into data and instruction memory like the RAM. this is called the modified harvard architecture.

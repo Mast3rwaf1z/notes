@@ -3,7 +3,7 @@
 #python script to display files
 
 import tkinter as tk
-from tkinter.ttk import Style
+from tkinter.ttk import Style, Button
 from markdown2 import Markdown
 from tkhtmlview import HTMLLabel
 from os import listdir, path
@@ -59,15 +59,22 @@ def previous(label:HTMLLabel):
 
 main = tk.Tk()
 style = Style(main)
-style.theme_use("breeze-dark")
+try:
+    style.theme_use("breeze-dark")
+except:
+    print("trying windows theme")
+    try:
+        style.theme_use("vista")
+    except:
+        print("failed to set theme, setting to default")
 md2html = Markdown()
 html = HTMLLabel(main, width=100, height=50)
 html.pack(side="left")
 html.set_html(md2html.convert(content[0]))
 next_prev_frame = tk.Frame(main)
-prev_button = tk.Button(next_prev_frame, text="Previous", command=lambda: previous(html))
+prev_button = Button(next_prev_frame, text="Previous", command=lambda: previous(html))
 prev_button.pack(side="left")
-next_button = tk.Button(next_prev_frame, text="Next", command=lambda: next(html))
+next_button = Button(next_prev_frame, text="Next", command=lambda: next(html))
 next_button.pack(side="left")
 next_prev_frame.pack(side="bottom")
 
@@ -92,7 +99,7 @@ for i in range(len(md_files)):
     obj = specific(i)
     split_string = md_files[i].split("/")
     title =split_string[len(split_string) - 2] + "/" + split_string[len(split_string) - 1]
-    buttons.append(tk.Button(button_frame, text=title, command=obj.set_specific, width=40))
+    buttons.append(Button(button_frame, text=title, command=obj.set_specific, width=40))
     buttons[i].pack(side="top")
 
 
