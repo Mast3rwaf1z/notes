@@ -37,3 +37,6 @@ fixed the placement of the devices, they are placed precisely how they should be
 
 may 1: 23:00 - 00:00
 added the last few tables and alligned the contents in the devices
+
+may 2: 19:00 - 20:00
+merged branch 22 and main, added new stuff from gui to stepper and tested with another exercise
