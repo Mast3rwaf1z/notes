@@ -21,11 +21,3 @@ def AlgorithmMSP_Sequential(A, N, M):
             if pSum > maxA:
                 maxA = pSum
     return maxA
-
-matrix = [
-        [3,-1,0],
-        [-4,5,17],
-        [7,6,-10]
-        ]
-result = AlgorithmMSP_Sequential(matrix, 3, 3)
-print(result)
