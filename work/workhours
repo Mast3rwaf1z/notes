@@ -40,3 +40,11 @@ added the last few tables and alligned the contents in the devices
 
 may 2: 19:00 - 20:00
 merged branch 22 and main, added new stuff from gui to stepper and tested with another exercise
+
+may 9: 18:50 - 19:50
+read some document sent by supervisor
+fixed issue where keyboard listeners was never killed
+added lines to the visualisation
+
+may 9: 23:30 - 00:30
+added lines to canvas for sending messages, might also add one for receiving and color code them with a prompt in the top left corner about what the colors mean
