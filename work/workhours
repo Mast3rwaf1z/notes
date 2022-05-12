@@ -48,3 +48,6 @@ added lines to the visualisation
 
 may 9: 23:30 - 00:30
 added lines to canvas for sending messages, might also add one for receiving and color code them with a prompt in the top left corner about what the colors mean
+
+may 11: 23:30 - 01:30
+fixed issues with too much content in messages and i'm pretty much satisfied with the gui as it is now
