@@ -51,3 +51,6 @@ added lines to canvas for sending messages, might also add one for receiving and
 
 may 11: 23:30 - 01:30
 fixed issues with too much content in messages and i'm pretty much satisfied with the gui as it is now
+
+may 12: 23:30 - 01:30
+added controls page to gui, tested some optimization for windows but failed, added received lines and is satisfied with the overall gui more now. created pull request, probably gonna work on readme next
