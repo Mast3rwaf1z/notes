@@ -1,3 +1,8 @@
+#define _ void loop
+#define main void setup
+_(){}
+
+
 const int ledpin = 13;
 const int interrupt2 = 2;
 const int interrupt3 = 3;
@@ -20,7 +25,7 @@ void low(){
     }
 }
 
-void setup(){
+main(){
     pinMode(ledpin, OUTPUT);
     pinMode(interrupt2, INPUT_PULLUP);
     pinMode(interrupt3, INPUT_PULLUP);
@@ -29,10 +34,4 @@ void setup(){
     digitalWrite(ledpin, LOW);
     attachInterrupt(digitalPinToInterrupt(interrupt2), low, LOW);
     attachInterrupt(digitalPinToInterrupt(interrupt3), high, LOW);
-}
-
-void loop(){} //dummy, this will run if no interrupt is detected
-
-ISR(PCINT0_VECT){
-    Serial.println("test");
 }

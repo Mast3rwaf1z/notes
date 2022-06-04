@@ -3,5 +3,5 @@
     "board": "arduino:avr:mega",
     "programmer": "arduino:parallel",
     "port": "/dev/ttyACM0",
-    "sketch": "topic6/topic6.ino"
+    "sketch": "topic7/topic7.ino"
 }

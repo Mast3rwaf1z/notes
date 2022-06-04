@@ -71,3 +71,6 @@ Second the tensors were defined in the multiply and hadamard functions which mea
 
 <image src="Figure_3.png">
 <image src="Figure_4.png">
+
+### MPI Exercise
+the bottleneck of such a system would definitely be the communication between nodes, take a network archtecture like a cube where when each node finishes it would still need to communicate its results to each other node - or a single managing node.

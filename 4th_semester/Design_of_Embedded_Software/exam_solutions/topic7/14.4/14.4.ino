@@ -1,8 +1,8 @@
-#include <krnl.h>
 #define _ void loop
 #define main void setup
 _(){}
 
+#include <krnl.h>
 #define init k_init
 #define create_task k_crt_task
 #define start k_start
@@ -14,5 +14,5 @@ _(){}
 k_msg_t* queue;
 
 main(){
-    init(1, 0, 0);
+    
 }
