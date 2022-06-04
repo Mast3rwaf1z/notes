@@ -2,6 +2,6 @@
     "configuration": "cpu=atmega2560",
     "board": "arduino:avr:mega",
     "programmer": "arduino:parallel",
-    "port": "/dev/ttyACM0",
-    "sketch": "topic7/topic7.ino"
+    "port": "/dev/ttyACM1",
+    "sketch": "test2/test2.ino"
 }

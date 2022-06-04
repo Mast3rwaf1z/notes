@@ -37,9 +37,7 @@ void determine_distance(){
         sleep(10);
         receive(queue, &recv, 0, NULL);
         int distance_traveled = recv * calibration_constant;
-        int cumulative_distance = (recv - ticks) * calibration_constant;
-        Serial.print("distance traveled: "); Serial.print(distance_traveled); Serial.print(" centimeters. cumulative distance: "); 
-        Serial.print(cumulative_distance); Serial.println(" centimeters");
+        Serial.println("distance traveled: " + String(distance_traveled));
     }
 }
 
