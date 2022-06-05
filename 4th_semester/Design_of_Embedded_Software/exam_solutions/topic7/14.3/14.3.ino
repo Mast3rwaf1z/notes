@@ -1,6 +1,11 @@
-#define _ void loop
-#define main void setup
-_(){}
+//include this in the top of arduino code to enable a nicer C++ feel
+#define main void loop(){} void setup           //disable void loop
+#define endl "\n"                               //define endl as known in C++
+template<typename T>                            //create typename equivalent to Any in python
+Print& operator<<(Print& serial, T value){      //define an operator for Serial equivalent to cout
+    serial.print(value);                        //print the value passed to the operator
+    return serial;                              //return the Serial object
+}
 
 #include <krnl.h>
 #define init k_init
@@ -13,18 +18,15 @@ _(){}
 #define stack_size 150
 k_msg_t* queue;
 
+
+
 const int calibration_constant = 10;
 int rotation_count = 0;
 
 void shaft_rotation_counter(){
     for(;;){
+        sleep(100);
         rotation_count++;
-    }
-}
-
-void read_and_send_rotation_count(){
-    for(;;){
-        sleep(10);
         send(queue, &rotation_count);
     }
 }
@@ -37,7 +39,7 @@ void determine_distance(){
         sleep(10);
         receive(queue, &recv, 0, NULL);
         int distance_traveled = recv * calibration_constant;
-        Serial.println("distance traveled: " + String(distance_traveled));
+        Serial << "Distance traveled: " << distance_traveled << " centimeters" << endl;
     }
 }
 

@@ -1,6 +1,11 @@
-#define _ void loop
-#define main void setup
-_(){}
+//include this in the top of arduino code to enable a nicer C++ feel
+#define main void loop(){} void setup           //disable void loop
+#define endl "\n"                               //define endl as known in C++
+template<typename T>                            //create typename equivalent to Any in python
+Print& operator<<(Print& serial, T value){      //define an operator for Serial equivalent to cout
+    serial.print(value);                        //print the value passed to the operator
+    return serial;                              //return the printer, in this case Serial
+}
 
 #include <krnl.h>
 #define init k_init
@@ -15,7 +20,7 @@ main(){                                                             //equivalent
     init(2, 0, 0);
     auto print_v = []{while(true){                                  //define task
         sleep(100);                                                 //sleep for 100 ms
-        Serial.println(v);                                          //do task
+        Serial << v << endl;                                        //do task
     }};
     auto increment_v = []{while(true){                              //define task
         sleep(2000);                                                //sleep for 2000 ms

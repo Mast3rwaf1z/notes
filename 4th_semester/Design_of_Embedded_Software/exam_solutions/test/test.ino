@@ -1,8 +1,13 @@
-#include <krnl.h>
-#define main void setup
-#define _ void loop
-_(){}//irrelevant
+//include this in the top of arduino code to enable a nicer C++ feel
+#define main void loop(){} void setup           //disable void loop
+#define endl "\n"                               //define endl as known in C++
+template<typename T>                            //create typename equivalent to Any in python
+Print& operator<<(Print& serial, T value){      //define an operator for Serial equivalent to cout
+    serial.print(value);                        //print the value passed to the operator
+    return serial;                              //return the printer, in this case Serial
+}
 
+#include <krnl.h>
 #define init k_init
 #define create_task k_crt_task
 #define start k_start
@@ -15,7 +20,7 @@ k_msg_t* queue;
 
 
 void task1(){
-    Serial.println("running task 1");
+    Serial << "running task 1" << endl;
     int counter = 0;
     while(true){
         sleep(1000);
@@ -26,16 +31,15 @@ void task1(){
 }
 
 void task2(){
-    Serial.println("running task 2");
+    Serial << "running task 2" << endl;
     String in;
     int loss_count;
     while(true){
         sleep(10000);
         for(int i = 0; i < queue->nr_el; i++){
             receive(queue, &in, 0, &loss_count);
-            Serial.print("received: "); Serial.println(in);
+            Serial << "received: " << in << endl;
         }
-        Serial.println("");
     }
 }
 

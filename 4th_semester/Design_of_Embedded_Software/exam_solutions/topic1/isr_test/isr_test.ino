@@ -1,6 +1,11 @@
-#define _ void loop
-#define main void setup
-_(){}
+//include this in the top of arduino code to enable a nicer C++ feel
+#define main void loop(){} void setup           //disable void loop
+#define endl "\n"                               //define endl as known in C++
+template<typename T>                            //create typename equivalent to Any in python
+Print& operator<<(Print& serial, T value){      //define an operator for Serial equivalent to cout
+    serial.print(value);                        //print the value passed to the operator
+    return serial;                              //return the printer, in this case Serial
+}
 
 
 const int ledpin = 13;
@@ -12,7 +17,7 @@ volatile boolean state = LOW;
 void high(){
     if(!state){
         digitalWrite(ledpin, HIGH);
-        Serial.println("Set LED high");
+        Serial << "Set LED high" << endl;
         state = HIGH;
     }
 }
@@ -20,7 +25,7 @@ void high(){
 void low(){
     if(state){
         digitalWrite(ledpin, LOW);
-        Serial.println("Set LED low");
+        Serial << "Set LED low" << endl;
         state = LOW;
     }
 }
