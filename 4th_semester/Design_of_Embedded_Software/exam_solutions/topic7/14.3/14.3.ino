@@ -1,11 +1,4 @@
-//include this in the top of arduino code to enable a nicer C++ feel
-#define main void loop(){} void setup           //disable void loop
-#define endl "\n"                               //define endl as known in C++
-template<typename T>                            //create typename equivalent to Any in python
-Print& operator<<(Print& serial, T value){      //define an operator for Serial equivalent to cout
-    serial.print(value);                        //print the value passed to the operator
-    return serial;                              //return the Serial object
-}
+#include <enhanced_ino.hpp>
 
 #include <krnl.h>
 #define init k_init
