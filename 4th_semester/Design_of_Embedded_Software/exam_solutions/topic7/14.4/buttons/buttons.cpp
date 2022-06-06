@@ -15,7 +15,7 @@ int main(int argc, char** argv){
     QVBoxLayout layout(NULL);
     for(int i = 0; i < floor_count; i++){
         QPushButton *button = new QPushButton(to_string(i).c_str());
-        string command = "echo " + to_string(i) + " >> /dev/ttyACM1";
+        string command = "echo " + to_string(i) + " >> /dev/ttyACM0";
         app.connect(button, &QPushButton::clicked, &app, [command]{
             system(command.c_str());
         });

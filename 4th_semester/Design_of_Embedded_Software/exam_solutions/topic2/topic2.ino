@@ -75,7 +75,7 @@ main(){
     }
     float relative_error[arrsize];
     for(int i = 0; i < arrsize; i++){ //calculate error
-        relative_error[i] = mda[i].mantissa-da[i];
+        relative_error[i] = myfloat2double(&mda[i]) -  da[i];
     }
     float sum = 0;
     for(int i = 0; i < arrsize; i++){   //calculate average error
@@ -83,13 +83,40 @@ main(){
     }
     float average = sum/arrsize;
     int index = random(0, arrsize);
-    Serial << "Pre conversion: " << da[index] << " Post conversion: " << " Exponent: " << mda[index].exponent << " Mantissa: " << mda[index].mantissa << " Average error: " << average << " Sum: " << sum << endl;
+    Serial << "Pre conversion: " << da[index] << " Post conversion: " << myfloat2double(&mda[index]) <<  " Average error: " << average <<  endl;
     double da2[arrsize];
     for(int i = 0; i < arrsize; i++){   //calculate square
         da2[i] = pow(*(da), 2);
     }
-    for(int i = 0; i < arrsize; i++){
-
+    myfloat_type mda2[arrsize];
+    for(int i = 0; i < arrsize; i++){   //calculate square
+        mult_float(&mda[i], &mda[i], &mda2[i]);
     }
+    float relative_error2[arrsize];
+    for(int i = 0; i < arrsize; i++){   //calculate error
+        relative_error2[i] = myfloat2double(&mda2[i]) - da2[i];
+    }
+    float sum2 = 0;
+    for(int i = 0; i < arrsize; i++){   //calculate average error
+        sum2+= relative_error2[i];
+    }
+    float average2 = sum2/arrsize;
+    int index2 = random(0, arrsize);
+    Serial << "double mult: " << da2[index2] << " myfloat mult: " << myfloat2double(&mda2[index2]) << " Average error: " << average2 << endl;
 
+    unsigned long time1 = micros();
+    for(int i = 0; i < arrsize; i++){
+        a*=da[i];
+    }
+    unsigned long time2 = micros();
+    myfloat_type f1;
+    doub2mydouble(a, &f1);
+    myfloat_type f;
+    for(int i = 0; i < arrsize; i++){
+        mult_float(&f1, &mda[i], &f);
+        memcpy(&f1, &f, 2);
+    }
+    unsigned long time3 = micros();
+    long time_difference = (time3-time2) - (time2-time1);
+    Serial << "Time difference: " << time_difference << " ms" << endl;
 }

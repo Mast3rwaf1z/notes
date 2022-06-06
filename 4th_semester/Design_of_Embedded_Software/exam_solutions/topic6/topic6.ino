@@ -54,7 +54,7 @@ void task2(){
 
 main(){
     Serial.begin(115200);
-    attachInterrupt(digitalPinToInterrupt(interrupt_pin), isr, LOW);
+    attachInterrupt(digitalPinToInterrupt(interrupt_pin), isr, FALLING);
     pinMode(interrupt_pin, INPUT);
     init(2, 0, 2);
     create_task(task1, 1, stack_size, new char[stack_size]);
