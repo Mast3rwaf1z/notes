@@ -1,98 +1,156 @@
 #include <enhanced_ino.hpp>
 
-class myprotocol{
+class super_cool_protocol{
     byte start = 0x2;
     byte escape = 0x10;
     byte escape_scalar = 0x20;
     byte stop = 0x3;
-    byte type = 0xf;
+    byte type = 0x2;
     byte dummy_byte = 0xff;
     private:
     enum State{
-        convert_escape,
-        restore
+        escaped,
+        not_escaped,
+        decode
     };
-    State state = convert_escape;
-    byte dataframe[18];
+    State state = not_escaped;
+    byte dataframe[(17*2)-2];
+    int length = 18;
     void build_dataframe(){
         //layer2
-        this->dataframe[0] = start;                                         //start byte
-        this->dataframe[1] = this->length();                                //packet length
+        dataframe[0] = start;                                         //start byte
+        dataframe[1] = get_length();                                  //packet length
         //layer3   
-        this->dataframe[2] = type;                                          //packet type
-        this->dataframe[3] = random(0x0, 0xff);                             //ReceiverID low
-        this->dataframe[4] = random(0x0, 0xff);                             //ReceiverID middle
-        this->dataframe[5] = random(0x0, 0xff);                             //ReceiverID high
-        this->dataframe[6] = random(0x0, 0xff);                             //Transducer Level
-        this->dataframe[7] = random(0x0, 0xff);                             //Quiet time
-        this->dataframe[8] = random(0x0, 0xff);                             //Masters in range N
-        this->dataframe[9] = random(0x0, 0xff);                             //RSSI-1
-        this->dataframe[10] = random(0x0, 0xff);                            //TxID_1_LOW
-        this->dataframe[11] = random(0x0, 0xff);                            //TxID_1_MIDDLE
-        this->dataframe[12] = random(0x0, 0xff);                            //TxID_1_HIGH
-        this->dataframe[13] = random(0x0, 0xff);                            //TxID_1_time_low
-        this->dataframe[14] = random(0x0, 0xff);                            //TxID_1_time_high
+        dataframe[2] = type;                                          //packet type
+        dataframe[3] = random(0x0, 0xff);                             //ReceiverID low
+        dataframe[4] = random(0x0, 0xff);                             //ReceiverID middle
+        dataframe[5] = random(0x0, 0xff);                             //ReceiverID high
+        dataframe[6] = random(0x0, 0xff);                             //Transducer Level
+        dataframe[7] = random(0x0, 0xff);                             //Quiet time
+        dataframe[8] = random(0x0, 0xff);                             //Masters in range N
+        dataframe[9] = random(0x0, 0xff);                             //RSSI-1
+        dataframe[10] = random(0x0, 0xff);                            //TxID_1_LOW
+        dataframe[11] = random(0x0, 0xff);                            //TxID_1_MIDDLE
+        dataframe[12] = random(0x0, 0xff);                            //TxID_1_HIGH
+        dataframe[13] = random(0x0, 0xff);                            //TxID_1_time_low
+        dataframe[14] = random(0x0, 0xff);                            //TxID_1_time_high
         //layer 2   
-        this->dataframe[15] = start;                                   //checksum lower
-        this->dataframe[16] = dummy_byte;                                   //checksum upper
-        this->dataframe[17] = stop;                                         //stop byte
+        dataframe[15] = random(0x0, 0xff);                            //checksum lower
+        dataframe[16] = random(0x0, 0xff);                            //checksum upper
+        dataframe[17] = stop;                                         //stop byte
     }
 
     public:
-    myprotocol(){
+    super_cool_protocol(){
         build_dataframe();
     }
-    myprotocol(byte dataframe[]){
 
+    super_cool_protocol(String packet){ //for each char, bytes are seperated by | //
+        int next = 0;
+        int index = 0;
+        for(int length = 0;; length++){
+            next = packet.indexOf("|", index+1);
+            if(next == -1){
+                this->length = length;
+                break;
+            }
+            dataframe[length] = (byte) packet.substring(index, next).toInt();
+            index = next+1;
+        }
+        this->state = escaped;
     }
+
     State get_state(){
-        return this->state;
+        return state;
     }
     byte* get_dataframe(){
-        return this->dataframe;
+        return dataframe;
     }
-    int length(){
-        return sizeof(this->dataframe) / sizeof(this->dataframe[0]);
+    int get_length(){
+        //return sizeof(this->dataframe) / sizeof(this->dataframe[0]);
+        return length;
     }
     //returns 1 if the state machine was successful, 0 if it failed
     int state_machine(){
         Serial << "Running state machine" << endl;
-        switch(this->state){
-            case convert_escape:
-                Serial << "converting 0x2 and 0x3 to escape chars" << endl;
+        switch(state){
+            case not_escaped:
+                Serial << "converting 0x2, 0x3 and 0x10 to escape chars" << endl;
                 
-                for(int i = 1; i < this->length()-1; i++){
-                    if(this->dataframe[i] == 0x2 || this->dataframe[i] == 0x3){
+                for(int i = 1; i < get_length() - 1; i++){
+                    if(dataframe[i] == start || dataframe[i] == stop || dataframe[i] == escape){
                         int index = i;
-                        for(int i = index; i < this->length(); i++){
-                            this->dataframe[i] = this->dataframe[i-1];
+                        length++;
+                        for(int j = get_length(); j > index; j--){
+                            dataframe[j] = dataframe[j-1];
                         }
+                        dataframe[index] = escape;
+                        dataframe[index+1] = dataframe[index+1] + escape_scalar;
+                    }
+                }
+                state = escaped;
+                return 1;
+            case escaped:
+                Serial << "Restoring 0x2 and 0x3 from escape chars" << endl;
+                for(int i = 1; i < get_length() - 1; i++){
+                    if(dataframe[i] == escape){
+                        int index = i;
+                        length--;
+                        for(int j = index; j < get_length(); j++){
+                            dataframe[j] = dataframe[j+1];
+                        }
+                        dataframe[index] = dataframe[index] - escape_scalar;
                     }
                 }
                 return 1;
-                break;
-            case restore:
+            case decode:
                 return 1;
-                break;
+
         }
         return 0;
     }
 };
+Print& operator<<(Print& printer, super_cool_protocol packet){
+    byte* dataframe = packet.get_dataframe();
+    int length = packet.get_length();
+    printer << "[";
+    printer << dataframe[0];
+    for(int i = 1; i < length; i++){
+        if(dataframe[i] >= 100){
+            printer << "," << dataframe[i];
+        }
+        else{
+            printer << ",\t" << dataframe[i];
+        }
+    }
+    printer << "]";
+    return printer;
+}
 
 main(){
     Serial.begin(115200);
-    myprotocol packet = myprotocol();
-    byte* dataframe = packet.get_dataframe();
-    Serial << "Dataframe:                   ";
-    for(int i = 0; i < packet.length(); i++){
-        Serial << dataframe[i] << " ";
-    }
-    Serial << endl;
-    Serial << "State:                       " << packet.get_state() << endl;
+    super_cool_protocol packet = super_cool_protocol();
+    Serial << "Dataframe:                \t" << packet << endl;
+    Serial << "State:                    \t" << packet.get_state() << endl;
     packet.state_machine();
-    Serial << "Dataframe post conversion:   ";
-    for(int i = 0; i < packet.length(); i++){
-        Serial << dataframe[i] << " ";
+    Serial << "Dataframe post conversion:\t" << packet << endl;
+
+    packet.state_machine();
+    Serial << "Restored dataframe:       \t" << packet << endl;
+
+    //read from serial
+    String in;
+    for(;;){
+        for(;;){
+            in = Serial.readString();   //run echo "2|0|16|34|16|35|16|48|16|34|16|35|16|48|16|34|16|35|16|48|16|34|16|35|16|48|16|34|0|3|" >> /dev/ttyACM1 to get an interesting dataframe
+            if(in != ""){
+                break;
+            }
+        }
+        super_cool_protocol in_packet = super_cool_protocol(in);
+        Serial << "from serial:            \t" << in_packet << endl;
+        in_packet.state_machine();
+        Serial << "converted:              \t" << in_packet << endl;
     }
-    Serial << endl;
+
 }
