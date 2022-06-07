@@ -11,7 +11,7 @@
 #define receive k_receive
 
 #define stack_size 150
-k_msg_t* scheduler;
+k_msg_t* schedule;
 k_msg_t* status_queue;
 #define floor_count 10
 
@@ -23,14 +23,14 @@ void monitor_buttons(){                                 //Service request
         in = Serial.read();                             //read from serial to simulate buttons, this is Monitor Floor Buttons
         if(in != 10 && in != -1){
             recv = in - 48;
-            send(scheduler, &recv);
+            send(schedule, &recv);
         }
     }
 }
 
-int get_from_scheduler(){                                       //Scheduler, should output where to move the elevator next
+int get_from_schedule(){                                       //Scheduler, should output where to move the elevator next
     int recv;
-    receive(scheduler, &recv, 0, new int);
+    receive(schedule, &recv, 0, new int);
     return recv;
 }
 
@@ -41,7 +41,7 @@ void run_elevator(){
     for(;;){
         sleep(10);
         if(elevator_status == next_floor){
-            next_floor = get_from_scheduler();
+            next_floor = get_from_schedule();
             if(next_floor == -1){
                 continue;
             }
@@ -49,12 +49,12 @@ void run_elevator(){
         }
         else if(elevator_status < next_floor){
             elevator_status++;
-            k_eat_msec(100);
+            k_eat_msec(1000);
             send(status_queue, &elevator_status);
         }
         else{
             elevator_status--;
-            k_eat_msec(100);
+            k_eat_msec(1000);
             send(status_queue, &elevator_status);
         }
     }
@@ -64,7 +64,6 @@ void status(){
     Serial << "Started status printing task" << endl;
     int elevator_status;
     for(;;){
-        sleep(1000);
         receive(status_queue, &elevator_status, -1, new int);
         if(elevator_status == 0){
             Serial << "Elevator is at ground floor" << endl;
@@ -81,7 +80,7 @@ main(){
     create_task(monitor_buttons, 1, stack_size, new char[stack_size]);
     create_task(run_elevator, 2, stack_size, new char[stack_size]);
     create_task(status, 3, stack_size, new char[stack_size]);
-    scheduler = create_queue(10, sizeof(int), new char[10]);
+    schedule = create_queue(10, sizeof(int), new char[10]);             //use krnl queue to make a first-in-first-out queue
     status_queue = create_queue(10, sizeof(int), new char[10]);
     start(1);
 }
