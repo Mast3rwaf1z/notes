@@ -60,3 +60,8 @@ show and pick command initial work
 
 may 21: 12:20 - 13:50
 started looking into implementing the syncemulator into stepper and worked more on the pick command
+
+june 18: 12:00 - 16:00
+finished step 3 of extending stepper, it can now successfully switch between async and sync execution.
+wrote a few comments on the issue tracker to gain an explaination on how to implement the issues
+started and finished writing an updated readme
