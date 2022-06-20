@@ -65,3 +65,8 @@ june 18: 12:00 - 16:00
 finished step 3 of extending stepper, it can now successfully switch between async and sync execution.
 wrote a few comments on the issue tracker to gain an explaination on how to implement the issues
 started and finished writing an updated readme
+
+june 29: 12:30 - 15:00
+moved some stuff into functions in stepper
+looked into how to do the reordering
+need to fix a problem with queue being defined as a message rather than a list, i can't reorder
