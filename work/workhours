@@ -72,3 +72,8 @@ looked into how to do the reordering
 need to fix a problem with queue being defined as a message rather than a list, i can't reorder
 
 june 24: 12:30 - 14:30
+fixed the issue with queue being defined as a message, i was just stupid
+
+june 25: 12:30 - 14:00
+finished extending stepper task and made pull request
+started planning unit test task
