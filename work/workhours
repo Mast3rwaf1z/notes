@@ -81,3 +81,6 @@ started planning unit test task
 july 2: 18:00 - 19:15
 merged GUI branch and stepper extension branch to see if they worked together, they do not, so i will fix the merge conflicts
 when i'm at it i'll add extension of stepper buttons to the GUI later
+
+july 3: 13:00 - 15:30
+Made GUI buttons and implemented two of them to work with the stepper extension, len(content)this is the pick and emulator switch buttons.
