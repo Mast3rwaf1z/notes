@@ -87,3 +87,7 @@ Made GUI buttons and implemented two of them to work with the stepper extension,
 
 july 4: 12:00 - 12:30
 added the last extension command to gui
+
+july 11: 13:20 - 15:20
+made pull request for merge fix
+started implementing modified medium for unit tests
