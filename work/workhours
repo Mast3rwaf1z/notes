@@ -98,3 +98,4 @@ changed a few things in exercise runner so test framework can be executed easier
 fixed the csv reader
 found out the way i was implementing it might be impossible
 need to research it abit more but i think i have an idea for a better solution, which only really requires an extension at the end of the original framework
+  this involves including some actual assertions, and changing the framework from using CSV to using a unit testing file with some assertions made for each exercise premade, this will make it easier for the course holder as well
