@@ -93,3 +93,8 @@ made pull request for merge fix
 started implementing modified medium for unit tests
 
 july 12: 12:30 - 15:20
+made the test framework executable
+changed a few things in exercise runner so test framework can be executed easier
+fixed the csv reader
+found out the way i was implementing it might be impossible
+need to research it abit more but i think i have an idea for a better solution, which only really requires an extension at the end of the original framework
