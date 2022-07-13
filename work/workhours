@@ -99,3 +99,9 @@ fixed the csv reader
 found out the way i was implementing it might be impossible
 need to research it abit more but i think i have an idea for a better solution, which only really requires an extension at the end of the original framework
   this involves including some actual assertions, and changing the framework from using CSV to using a unit testing file with some assertions made for each exercise premade, this will make it easier for the course holder as well
+
+july 13: 12:00 - 14:00
+finished my changes to exercise_runner
+added testing modules
+changed how i want to make the execution sequence function
+wrote a comment on the unit test issue detailing everything i've worked on so far with the issue
