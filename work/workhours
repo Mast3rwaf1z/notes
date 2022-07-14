@@ -105,3 +105,12 @@ finished my changes to exercise_runner
 added testing modules
 changed how i want to make the execution sequence function
 wrote a comment on the unit test issue detailing everything i've worked on so far with the issue
+
+july 14: 11:30 - 14:00
+added another command to exercise_runner, to allow for custom testing csv files, they need to be in the correct directory
+changed the testing system from being one file to the receiving and sending processes are using seperate files
+  the reason this is neccisary is because the sending processes will be waiting forever if all devices reach a sending state while the next queued action is a receive
+  the user will still be able to evaluate their solution as this requires the processes to still listen for messages after sending has stopped, until they have the messages they need
+i have also moved the files from "emulators/tests/file.csv" to "emulators/tests/sending/file.csv" and "emulators/tests/receiving/file.csv"
+the csv reader has also been changed from making a list of messages in tuples, to a list of integers, in the receiving queue representing destinations and in the sending queue representing sources
+  in this case the csv has also been changed, removing the "type" and "destination" columns from the sending csv and the "type" and "source" columns from the receiving csv
