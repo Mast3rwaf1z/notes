@@ -116,5 +116,5 @@ the csv reader has also been changed from making a list of messages in tuples, t
   in this case the csv has also been changed, removing the "type" and "destination" columns from the sending csv and the "type" and "source" columns from the receiving csv
 
 july 15: 15:00 - 21:30
-rewrote the entirety of the entirety of the gui in PyQt6, was only gonna put it as paid work if it worked
+rewrote the entirety of the gui in PyQt6, was only gonna put it as paid work if it worked
 Need to test it in windows, but seems to work much better than tkinter in linux, the lag problem is gone
