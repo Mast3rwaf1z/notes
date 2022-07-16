@@ -118,3 +118,8 @@ the csv reader has also been changed from making a list of messages in tuples, t
 july 15: 15:00 - 21:30
 rewrote the entirety of the gui in PyQt6, was only gonna put it as paid work if it worked
 Need to test it in windows, but seems to work much better than tkinter in linux, the lag problem is gone
+
+july 16: 00:40 - 03:10
+merged extension gui with updated gui
+updated extension gui to PyQt6
+tested gui in windows, works fine
