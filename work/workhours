@@ -123,3 +123,9 @@ july 16: 00:40 - 03:10
 merged extension gui with updated gui
 updated extension gui to PyQt6
 tested gui in windows, works fine
+
+july 19: 13:00 - 14:30
+made sure the correct pull requests are marked for review
+fixed the issue with receives coming out of order, it was just an issue with printing
+resized the pick gui
+tested all features before marking pull request for review, GUI extension should be completely finished now
