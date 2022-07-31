@@ -129,3 +129,14 @@ made sure the correct pull requests are marked for review
 fixed the issue with receives coming out of order, it was just an issue with printing
 resized the pick gui
 tested all features before marking pull request for review, GUI extension should be completely finished now
+
+july 24: 12:00 - 13:20
+prepped a bit for a meeting with Michele
+he wants a FAQ? i've prepped a few questions to provoke some questions from michele
+tested screensharing in teams
+
+july 25: 10:00 - 11:00
+had meeting with michele
+
+july 31: 23:00 - 24:00
+made and tested a requirements.txt file to use with the pip install -r requirements.txt
