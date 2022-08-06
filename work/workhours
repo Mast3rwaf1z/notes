@@ -140,3 +140,14 @@ had meeting with michele
 
 july 31: 23:00 - 24:00
 made and tested a requirements.txt file to use with the pip install -r requirements.txt
+
+august 4: 11:45 - 13:15
+sent an email to michele about workhours
+added a little check to the gui
+started working on the unit testing medium changes michele wanted
+
+august 6: 10:30 - 13:00
+improvements to pick command
+  redesigned the ui to be more intuitive
+  made it dequeue to the message chosen
+  made the devices wait for the correct device using some lock magic
