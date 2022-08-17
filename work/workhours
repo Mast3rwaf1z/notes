@@ -151,3 +151,12 @@ improvements to pick command
   redesigned the ui to be more intuitive
   made it dequeue to the message chosen
   made the devices wait for the correct device using some lock magic
+  
+august 9: 13:00 - 14:00
+fixed bugs in pick command
+
+august 17: 14:30 - 17:00
+fixed the last few bugs with the pick command
+changed a few keybindings so buttons in the gui isn't triggered when they aren't meant to
+added a way to stop additional windows from opening when they're double clicked accidentally
+added an entry in the FAQ
