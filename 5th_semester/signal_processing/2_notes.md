@@ -1,6 +1,8 @@
 # Lecture 2
 ## questions
 is the delta function the original signal? or is it signal x?
+
+actually no, the delta function is the unit sample function
 ## discrete time signal
 the signal is only known for each point where weve sampled it
 
@@ -48,3 +50,15 @@ tile invariance means that the output is always the same regardless of when i as
 delay is not accounted for, a delayed signal is the still invariant as long as the output is the same
 
 if we know the impulse response h[n] we can get the y[n] signal for any x[k]
+
+## convolution
+convolutional sum equation
+
+often shortened to y[n] = x[n] * h[n]
+
+\* is NOT scaling, its convolution, scaling is denoted by a dot or nothing at all
+
+## impulse response
+the impulse response contains multiple samples
+
+
