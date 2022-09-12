@@ -142,7 +142,7 @@ main(){
     String in;
     for(;;){
         for(;;){
-            in = Serial.readString();   //run echo "2|0|16|34|16|35|16|48|16|34|16|35|16|48|16|34|16|35|16|48|16|34|16|35|16|48|16|34|0|3|" >> /dev/ttyACM1 to get an interesting dataframe
+            in = Serial.readString();   //run echo "2|0|16|34|16|35|16|48|16|34|16|35|16|48|16|34|16|35|16|48|16|34|16|35|16|48|16|34|0|3|" >> /dev/ttyACM0 to get an interesting dataframe
             if(in != ""){
                 break;
             }

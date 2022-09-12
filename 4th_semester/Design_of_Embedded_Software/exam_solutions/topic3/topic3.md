@@ -9,10 +9,10 @@ an arduino running the protocol can be communicated with over tty using the foll
 
 ## EBNF
 ```ebnf
+frame = (digit | alphabetic character), (digit | alphabetic character), {|, (digit | alphabetic character), (digit | alphabetic character)}
 symbol = "|"
 digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 alphabetic character = "A" | "B" | "C" | "D" | "E" | "F"
-frame = (digit | alphabetic character), (digit | alphabetic character), {|, (digit | alphabetic character), (digit | alphabetic character)}
 rule = "02", "03", "10"
 ```
 ## 

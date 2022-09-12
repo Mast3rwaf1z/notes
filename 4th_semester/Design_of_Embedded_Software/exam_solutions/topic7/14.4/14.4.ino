@@ -63,8 +63,9 @@ void run_elevator(){
 void status(){
     Serial << "Started status printing task" << endl;
     int elevator_status;
+    Serial << "Elevator is at ground floor" << endl;
     for(;;){
-        receive(status_queue, &elevator_status, -1, new int);
+        receive(status_queue, &elevator_status, 0, new int);
         if(elevator_status == 0){
             Serial << "Elevator is at ground floor" << endl;
         }

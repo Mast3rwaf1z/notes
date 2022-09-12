@@ -41,6 +41,6 @@ main(){
     init(2, 0, 1);
     queue = create_queue(10, 10, new char*);
     create_task(shaft_rotation_counter, 1, stack_size, new char[stack_size]);
-    create_task(determine_distance, 1, stack_size, new char[stack_size]);
+    create_task(determine_distance, 2, stack_size, new char[stack_size]);
     start(1);
 }

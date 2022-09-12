@@ -42,6 +42,8 @@ the system is causal if all values preceeding the choice of value n0 are the onl
 an example:
 y[n] = x[n+1] -x[n] is not causal because the k value of +1 is in the future
 
+does not answer before its asked
+
 ## LTI systems - Linear Time Invariant systems
 x[k] is considered as a scalar
 

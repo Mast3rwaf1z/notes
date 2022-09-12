@@ -75,11 +75,11 @@ main(){
     }
     float relative_error[arrsize];
     for(int i = 0; i < arrsize; i++){ //calculate error
-        relative_error[i] = myfloat2double(&mda[i]) -  da[i];
+        relative_error[i] = abs(myfloat2double(&mda[i]) -  da[i])/abs(da[i]); //relative error is calculated with absolute values, absolute error is calculated with mda2[i] - da2[i]
     }
     float sum = 0;
     for(int i = 0; i < arrsize; i++){   //calculate average error
-        sum += relative_error[i];
+        sum += relative_error[i]; 
     }
     float average = sum/arrsize;
     int index = random(0, arrsize);
@@ -94,7 +94,7 @@ main(){
     }
     float relative_error2[arrsize];
     for(int i = 0; i < arrsize; i++){   //calculate error
-        relative_error2[i] = myfloat2double(&mda2[i]) - da2[i];
+        relative_error2[i] = abs(myfloat2double(&mda2[i]) - da2[i])/abs(da2[i]); //relative error is calculated with absolute values, absolute error is calculated with mda2[i] - da2[i]
     }
     float sum2 = 0;
     for(int i = 0; i < arrsize; i++){   //calculate average error
