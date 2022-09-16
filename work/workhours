@@ -165,3 +165,9 @@ september 15 17:00 - 19:45
 fixed pick again
 added colors to terminal output
 implemented a new run method in the stepper to make sure the execution goes as planned
+
+september 16 12:00 - 15:30
+made new coloring
+fixed sync emulator to work with pick
+cleaned exercise runner gui
+tried out some ways to log messages in the same window as the program
