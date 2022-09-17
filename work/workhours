@@ -177,3 +177,7 @@ changed the command line to work exactly like the gui
 the old one was structured in a strange way and i know more about avoiding race conditions, which is one of the issues that happens when two threads try to print simultaneously
 the solution was to restructure the command line a bit, it has the same functions, they're just triggered differently
 also found out that a barrier works a lot better for the stepping function so i changed it to use a barrier instead
+
+september 17 17:00 - 19:00
+worked on making an abstract, sent an email to michele about the talk
+made some structure for a presentation
