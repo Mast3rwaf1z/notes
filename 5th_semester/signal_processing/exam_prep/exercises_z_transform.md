@@ -25,4 +25,25 @@ $$X(z)=\frac{z(1)}{z(1-\frac1{2z})}=\frac z{z-\frac12}$$
 
 This proceedure is used for all exercises onwards.
 
+Slide 22 in lecture 3 shows that there is a pole in $\frac12$
+
+Slide 23 in lecture 3 shows that $|z|<|a|$ so the ROC becomes:
+
+$$|z|>\frac12$$
+
 **b)** $-\left(\frac12\right)^nu[-n-1]$
+
+$$x[n]=-\left(\frac12\right)^nu[-n-1]$$
+
+$$X(z)=\sum_{n=-\infty}^\infty x[n] z^{-n}$$
+
+$$X(z)=\sum_{n=-\infty}^{-1}\left(\frac12\right)^nz^{-n}$$
+
+
+$$X(z)=\sum_{n=-\infty}^{-1}\left(\frac12\right)^n\left(\frac1z\right)^n$$
+
+$$X(z)=\sum_{n=-\infty}^{-1}\left(\frac1{2z}\right)^n$$
+
+$$X(z)=\frac{\left(\frac1{2z}\right)^{-\infty}-\left(\frac1{2z}\right)^{-1}}{1-\frac1{2z}} = \infty$$ 
+
+?????
