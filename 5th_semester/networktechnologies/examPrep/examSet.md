@@ -75,3 +75,25 @@ Error detection, and more notably cyclic redundancy check is defined by defining
 $$M(x)=(1\cdot x^7)+(0\cdot x^6)+(1\cdot x^5)+(1\cdot x^4)+(0\cdot x^3)+(0\cdot x^2)+(0\cdot x^1)+ (1\cdot x^0)$$
 $$M(x)=x^7+x^5+x^4+1$$
 and doing some complicated math to calculate whether the data in the packet is correct, this is useful as the only extra data to be added to the packets are usually a check value, a value used in the calculations. using this check a remainder will be returned which symbolizes the error rate of the packet, a low remainder means the packet is relatively error free. there might also be attached a residue constant which symbolizes the expected remainder. if the values does not match, the data contains an error.
+
+# Topic: MAC Protocols
+**Give examples of MAC protocols with static channel allocation. Discuss their advantages and disadvantages**<br>
+if we observe a protocol like FDMA (Frequency division multiple access), its a protocol where we divide a frequency channel into smaller segments; dividing it into smaller bandwidths and letting the users send as frequently as they want on that bandwidth. This is not very efficient in most configurations as most traffic is bursty, letting the channel be idle most of the time while when one user wants to send a lot of data at once they will be limited by the limited bandwidth. this protocol can be implemented with static channel allocation such that the bandwidth is divided once and never afterwards.
+
+another example would be TDMA (Time Division Multiple Access) where a time period would be split evenly between all users, the advantage here is that every user will be able to use the full bandwidth during their time but the channel might be idle most of the time with this method, this can also be implemented with static channel allocation such that all users gets their time slot once. This is a big disadvantage as if one user leaves, that time slot will always be idle afterwards.
+
+**Explain the principle behind a Random Access class of MAC protocols. Give an example of a such a protocol**<br>
+A random access protocol could be the Aloha protocol
+
+The aloha protocol works by transmitting immediately on the channel, if the channel is busy the protocol will wait for a random period and try to transmit on the channel again. This would be a very messy protocol to use as there will be a large amount of packet loss but its also one where the communication overhead between nodes will be very low.
+
+Aloha isn't very efficient as it would peak at a throughput of about 40% of the potential throughput, CSMA is an alternate version that is much more efficient
+
+**Explain main features of Carrier Sense Multiple Access (CSMA) protocol, including the difference between non-persistent and 1-persistent versions**<br>
+so the main difference between CSMA and aloha would be that CSMA does listen to the channel before transmitting, that means it will check whether the channel is busy before transmitting itself, it is not that different to aloha, it will treat a concurrent transmission as a collision, but the difference is that the colliding client will never transmit, letting the first client finish their transmission without a collision, effectively turning aloha's low 40% throughput into a potential 90% throughput. This is because in aloha both transmissions would be lost in case of a collision while in CSMA only the 2nd transmission would be lost.
+
+Non-persistent waits for a random period before attempting to transmit again
+
+1-persistent waits until the channel is no longer busy to transmit, this might be prone to collisions though, as during one transmission there might be multiple clients waiting to transmit. at this collision the clients may resort to wait by a random amount like non-persistent CSMA.
+
+**Explain hidden and exposed terminal problems**<br>
