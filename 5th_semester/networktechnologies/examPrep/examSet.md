@@ -97,3 +97,149 @@ Non-persistent waits for a random period before attempting to transmit again
 1-persistent waits until the channel is no longer busy to transmit, this might be prone to collisions though, as during one transmission there might be multiple clients waiting to transmit. at this collision the clients may resort to wait by a random amount like non-persistent CSMA.
 
 **Explain hidden and exposed terminal problems**<br>
+This is a term used in wireless communication where there are multiple nodes that have a range. The terminals within range of an arbitrary terminal would be called the exposed terminals and the terminals outside would be called the hidden nodes. The problems within these include that a terminal C with terminal A as hidden and terminal B as exposed might want to transmit to terminal B, but will encounter collision in case terminal A is transmitting, if all terminals are exposed to each other, node C will hear the communication from A to B and will wait until that transmission is over. thus not encountering collision.
+
+Another problem might be if node A, B, C and D all are within range of each other and node A transmits to node B, while node C wants to transmit to node D, node C can't use the same channel as it is busy and thus will need to wait until the channel isn't used by A and B. this is essentially the same problem as above.
+
+# Topic: WLAN IEEE 802.11 standard
+**Explain the Random backoff time mechanism used in the standard. Explain how prioritization of different messages is realized**<br>
+The basic terminology used in this standard is as follows:
+
+*   A station
+
+Some terminal that has access to the wireless network, that means it should be within range of the access point that enables the wireless network.
+
+*   Access point
+
+An access point is the receiver that manages the signals from the different stations
+
+The random backoff time mechanism has two types of mac protocols: PCF and DCF, DCF is the standard version where the stations all pick a random waiting period between 0 and the length of the contention window, when a station's waiting period is over it will transmit and the other stations will wait. if collision happens the contention window will be doubled and the stations will all pick a new random number.
+
+PCF is a prioritized message, when a station wants to send a PCF message it will bypass the backoff window and transmit after the PIFS period. otherwise in case of DCF messages, the system will wait for the DIFS period.
+
+In the case of ACK messages which tend to be short and important for the system, they will always be transmitted after the SIFS period.
+
+Slot time is the time it will take before each station will decrement their waiting period, it is equal to the maximum time it will take for a station to transmit a signal.
+
+**Explain the “handshaking” mode of operation (with RTS/CTS messages) and basic mode (without RTS/ CTS) and the associated trade-offs**<br>
+This question asks about the MACA protocols;
+
+RTS stands for "Request to Send" it means that the sender will request a receiver for the right to transmit to it, it will avoid collisions as hidden terminals will receive a CTS not meant for them and thus know that the target terminal is not available.
+
+CTS stands for "Clear to Send", it means that the terminal that was requested to send is idle and the requesting terminal can start sending to it. it is a very important message as it will also let any other terminals in range know that the channel is going to be busy.
+
+basic modes are for example DCF, it just functions with the random time delay mechanism as described above.
+
+the advantages of RTS/CTS are as follows;
+*   Collisions are avoided
+*   Hidden stations problem is solved
+
+and the disadvantages are:
+*   The goodput is reduced*
+*   doesn't work with broadcast and multicast as it is not feasable in all systems to wait for an RTS
+
+# Topic: Network layer and routing
+**You regulate a flow of packets using a token bucket, feeding into a leaky bucket. Assume that the token bucket has a rate of 5 packets per second, and a capacity of 60 tokens. The leaky bucket has a rate of 20 packets per second. Assume that the token bucket is empty. 200 packets has arrived. How long will it take before all packets have left?**<br>
+I'm gonna assume that the token bucket has a *receiving rate* of 5 packets per second, in that case as there is 200 packets, and we can push 5 packets through in a second, it will be:
+
+$\frac{200}{5}=40$ seconds
+
+this is assumed as the token bucket is empty, if the bucket was full then the bucket will release its full capacity, releasing 60 packets into the leaky bucket. The datarate of the leaky bucket will be higher than the time it will take to fill it up with the 5 packets per second, by observation the token bucket will catch up and thus making the time:
+
+$\frac{200-60}{5}=28$ seconds.
+
+**Explain the main principles of link state routing approach**<br>
+The node maintains a map of the network, i'm interpreting this map to be a graph of the network. based on this map the distances from one node to each other node can be calculated based on a Shortest Path Algorithm.
+
+The map is maintained by a node flooding the network. When the network is flooded it transmits information about its distance to all connected nodes, which lets all other nodes update their map.
+
+This protocol is not prone to the count-to-infinity problem.
+
+**Explain the main principles of distance vector routing**<br>
+The node has a list of other nodes in the network where it stores information about its distance to these nodes in hops, and the direction to that node. The direction is the node it will hop to, to reach the desired node. The information is spread to other nodes in fixed intervals, when the node receives information about other nodes it can recalculate its routing tables based on the information received.
+
+The communication overhead is very low as each node is only communicating with its neighbors, it does send its entire list in these spreads but there isn't repeated communication between the same two nodes in one information spread.
+
+The disadvantage of this protocol is generally how its prone to the count-to-infinity problem as it utilizes the bellman-ford algorithm, which is prone to issues if there is a ring shaped connection in the network.
+
+# Topic: Ad hoc networks
+**Explain flooding and broadcast storm problem in ad hoc networks**<br>
+*   flooding
+
+flooding is the concept of transmitting the same packet to every node in the network. This routing method works by an arbitrary node in the network would receive a packet and transmit it to all its neighbors, if the node then receives the packet again it will not transmit it to its neighbors, as you can assume the packet has already been transmitted from this node to its neighbors.
+
+Flooding is the main concept behind broadcasting
+
+*   broadcast storm
+
+This is a problem that arises if a large number of broadcast packets are transmitted, it can occur in networks based on link-state routing as the more nodes that join the link-state routing network, the more packets will be broadcast during the flooding step of link-state routing. A broadcast storm would severely impact the performance of the network as it implies that the capacity of the network is being met with these packets.
+
+**Explain the difference between proactive and reactive routing approaches**<br>
+*   proactive routing:
+
+this is the routing approach where the routes are stored in tables, these are the routing tables as known as usual.
+
+It responds to changes whenever it runs its routing algorithm, this means that when link-state routing would flood the network with information, it will simultaneously also find out which nodes still are in the network and which new nodes have been added to the network. These are the topology changes, there are two ways this can be triggered: it can be triggered by an arbitrary period, where the flooding will begin and end. or it could be triggered by an event in the network that makes the node start a flood.
+
+*   Reactive routing:
+
+Reactive routing is defined by only starting to attempt to create routes when the network is needed, this means that there will be a lot of traffic on the network every time the routes are needed.
+
+The routing tables are also only updated when there is a need for it, it might be if there is congestion or a link is broken, it will need to find a different route. when this happens the routing algorithm might have to rediscover all its routes.
+
+*   differences
+
+The main difference is when the route discovery happens, the delay for a transmission is naturally higher with reactive routing as the network will have to discover before it can transmit, but in turn reactive routing requires less storage per node as it wouldn't have to store new routes constantly from the received routes in a route discovery.
+
+**Explain the main principles of Dynamic Source Routing protocol**<br>
+DSR is a reactive routing protocol, that means that in the case of a route not yet known, it will employ route discovery.
+
+Route discovery works by the source node flooding the network with route request packets (RREQ), when a node isn't the destination node, they simply append their own identifier to the packet and forwards it. observe the example below
+
+you have the network: A - B - C - D, where A wants to transmit to D, but does not know the route to D, here A will flood the network, in this case sending a RREQ packet to B, B is not the destination so it appends its identifier `B` to the packet, C does the same, resulting in the packet `BC` which arrives at D, which responds with a route reply (RREP)
+
+If multiple routes are discovered, the protocol will use the shortest route as it will append the route to its routing table.
+
+# Topic: Transport Layer
+**Explain how TCP achieves reliable in-order delivery of TCP segments. What is the role of a receiver buffer and how is receiver buffer overflow prevented?**<br>
+the reliable delivery is handled usually by congestion control and the ARQ scheme on the transmitting node, the congestion control algorithm usually functions by maintaining a congestion window size that is measured in MSS, maximum segment size, which is the maximum size of a segment. a segment is generally a packet or group of packets. Examining TCP Reno the congestion window is simply incremented, sending a larger and larger amount of data between acknowledgements. once the datarate has been reached it is expected to lose packets, when the packets are lost the congestion window will fall to half its size and continue incrementing.
+
+The receiver buffer is used to both assemble split packets and for having a place to store received data. it is also used to reorder packets according to their sequence number such that the assembled packet is readable.
+
+in case of a buffer overflow the packet is usually retransmitted, but flow control should also prevent any overflow from happening as the receiver maintains a receive window which tells the sender how much data the receiver can handle. increasing the receiver buffer would also be a solution.
+
+**Explain the role of duplicate acknowledgements and timeouts for adjustments of congestion window**<br>
+duplicate acknowledgements (DUPACKS) are transmitted when a packet is dropped, lets say you transmit the packets with sequence numbers: 1,2,3,4,5,6,7,8,9, but you lose packet 3, you'd get an ACK with sequence number 2, then 3 DUPACKs with sequence number 2 and then the congestion window will be reduced, in the case of TCP Reno, the congestion window will be halved. if 2 or 1 DUPACK is received, the algorithm would just trigger fast retransmission and retransmit the lost packet immediately.
+
+A timeout is usually also employed at the sender side where if a connection is completely lost then the sender would reach a timeout and would have to find a new route to the receiver.
+
+**Explain the congestion control mechanism of TCP (slow start phase and congestion avoidance)**<br>
+The congestion control mechanism of TCP is usually what differentiates different implementations of TCP, i will take the example of TCP Reno in this case. slow start is an algorithm within congestion control that lets the algorithm probe the data rate of the connection, the slow start algorithm starts contrary to the name with an exponential growth to the congestion window, but once the initialization, the Reno algorithm will start to follow a sawtooth pattern. the slow start algorithm contains a threshold called "ssthresh" which denotes the size of the congestion window in which the algorithm will switch from running slow start to running the algorithm it is part of.
+
+Congestion avoidance is defined by having another threshold where the TCP Reno algorithm will keep its congestion window below, and therefore avoiding more packets to be dropped as ideally to keep a high datarate you would want to keep a congestion window that approaches the datarate. Reno following this threshold happens just after the ssthresh has been reached.
+
+**What are the possible problems of executing TCP over a wireless technology?**<br>
+There can be a problem in wireless networks if you have a very unreliable connection, lets say you're having a single bar in a wireless network and is trying to download a large file, there will be a lot of packet loss, that can't be predicted, both because of interference and because of the signal generally being too weak, so the congestion window might be reduced so much that the datarate is extremely low. The link might have a much higher capacity when the node is physically closer to the access point but at the edge the packet loss might trick the algorithms to think the datarate is much lower.
+
+# Topic: Introduction to Fault Tolerance
+**A server node shows has a down-time of 20 hours per year. Show how to calculate the resulting availability Pr(Server operational). Extend your derivation to the case of a redundant structure of 3 servers. Show how to calculate its availability assuming independent faults.**<br>
+so to find the availability probability we will divide the total uptime by the product of the uptime and the downtime:
+
+$$\frac{365*24}{(365*24)+20}=0.9977=99.77\%$$
+
+to do the same for the 3 servers we can use the following formula:
+
+$$A=1-(1-A_1)^N$$
+
+$$A=1-(1-0.9977)^3=1-(1.2166999999999504e-08) \approx 100\%$$
+
+**Discuss advantages and disadvantages of cluster structures (that hide the redundancy to accessing nodes) as opposed to an architecture where failover is done via the Clients (such as RSerPool)**
+A cluster structure is generally defined as having a large network of servers where there is a software layer that abstracts the server nodes underneath, this is useful as the server will only have one ip-address.
+
+The reason you would make a server cluster would be to more easily have load balancing of the server nodes, you would be able to offload tasks to the cluster and let the cluster descide which node runs the process.
+
+failover is when a server fails you would have another server sharing the same state of the initial server(PE). Then the failover happens and the usage of the server continues on the next node. This is a distributed redundancy model.
+
+The failover in a client based connection like RSerPool would be implemented by the client connecting directly to the next server, this is done in a protocol called "Aggregate Server Access Protocol(ASAP)" using its own layer, so the failover is still done automatically but its handled by the client.
+
+in the RSerPool scenario you would expect every single node to have the full implementation of the software needed to be run on them, there won't be some of the subprocesses being run on a different node in the system, this has both advantages and disadvantages as the load can more easily be balanced if the subprocesses can be distributed but it can also lead to loss of data if the other node goes offline.
