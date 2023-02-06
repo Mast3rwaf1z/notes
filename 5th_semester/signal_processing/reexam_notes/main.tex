@@ -1,15 +1,26 @@
 \documentclass{article}
 %packages
 \usepackage[a4paper, total={6in, 8in}]{geometry}
-
-:
+\usepackage{float}
 \title{Signal Processing Notes}
 \author{Thomas Møller Jensen}
 \begin{document}
 \maketitle
 \section*{Pre course: Complex numbers}
 \section*{Topic 1: Introduction to signals}
-A discrete signal is generally defined as a sequence of numbers - A set in other words.\\
+A discrete signal is generally defined as a sequence of numbers \- A set in other words.\\
+There are multiple different basic sequences that you can consider, these will be shown below:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Name} & \textbf{Definition} \\\hline
+		sequence & $x[n]=\sum_{k=-\infty}^{\infty} x[k]\delta [n-k]$ \\\hline
+		unit sample sequence & $\delta [n]=\{^{0, n\neq 0,}_{0, n = 0.}$ \\\hline
+		unit step sequence & $u[n]=\{^{1, n \leq 0,}_{0, n<0.}$ \\\hline
+	\end{tabular}
+	
+\end{table}
 
 \section*{Topic 2: Convolution}
 \section*{Topic 3: z-transform}
@@ -18,12 +29,12 @@ A discrete signal is generally defined as a sequence of numbers - A set in other
 \section*{Topic 6: Digial IIR Filters}
 \subsection*{The Impulse Invariant Method}
 \section*{Topic 7: Design of IIR Digital Filters}
-\section*{Topic 8: Digital FIR Filters
+\section*{Topic 8: Digital FIR Filters}
 \subsection*{Linear Phase}
 \subsection*{The Window Method}
 \section*{Topic 9: Frequency Analysis of LTI Systems}
 \section*{Topic 10: Realization Structures for Digital Filters}
-\section*{Topic 11-13: The Discrete Fourier Transform}
+\section*{Topic 11\-13: The Discrete Fourier Transform}
 \section*{Topic 14: The Short Time Fourier Transform (STFT)}
 
 
