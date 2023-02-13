@@ -7,6 +7,10 @@ $$t_c=t_s-\frac{RTT}{2}$$
 
 where RTT is the round trip time.
 
+The advantage of this approach is that it is very simple, it does not require a lot of communication while calculating time fine
+
+halving RTT isn't the best method to find the time difference between the two nodes, the transmission and receival could take different time without knowing, so this synchronization method could be inaccurate.
+
 **Explain the concept of causal partial order using an example event diagram**
 
 A causal system is generally a system where an event is never dependant on a future event in the system. 
@@ -232,6 +236,14 @@ to do the same for the 3 servers we can use the following formula:
 $$A=1-(1-A_1)^N$$
 
 $$A=1-(1-0.9977)^3=1-(1.2166999999999504e-08) \approx 100\%$$
+
+other formula for parallel systems:
+
+$$A=1-\Pi_{i=1}^N (1-A_i)$$
+
+for serial systems:
+
+$$A=\Pi_{i=1}^N A_i$$
 
 **Discuss advantages and disadvantages of cluster structures (that hide the redundancy to accessing nodes) as opposed to an architecture where failover is done via the Clients (such as RSerPool)**
 A cluster structure is generally defined as having a large network of servers where there is a software layer that abstracts the server nodes underneath, this is useful as the server will only have one ip-address.

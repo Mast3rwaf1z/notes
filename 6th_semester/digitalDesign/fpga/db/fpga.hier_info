@@ -1,0 +1,30 @@
+|ex6
+sw0 => led0.IN0
+sw0 => c0.IN0
+sw1 => led1.IN0
+sw1 => c1.IN0
+sw1 => c1.IN1
+sw2 => led2.IN0
+sw2 => c2.IN0
+sw2 => c2.IN1
+sw3 => led3.IN0
+sw3 => c3.IN0
+sw3 => c3.IN1
+sw4 => led0.IN1
+sw4 => c0.IN1
+sw5 => led1.IN1
+sw5 => c1.IN1
+sw5 => c1.IN1
+sw6 => led2.IN1
+sw6 => c2.IN1
+sw6 => c2.IN1
+sw7 => led3.IN1
+sw7 => c3.IN1
+sw7 => c3.IN1
+led0 << led0.DB_MAX_OUTPUT_PORT_TYPE
+led1 << led1.DB_MAX_OUTPUT_PORT_TYPE
+led2 << led2.DB_MAX_OUTPUT_PORT_TYPE
+led3 << led3.DB_MAX_OUTPUT_PORT_TYPE
+led4 << c3.DB_MAX_OUTPUT_PORT_TYPE
+
+
