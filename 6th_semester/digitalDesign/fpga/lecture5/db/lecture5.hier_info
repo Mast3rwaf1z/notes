@@ -1,0 +1,42 @@
+|ex3
+led0 <= cnt0[0].DB_MAX_OUTPUT_PORT_TYPE
+led1 <= cnt0[1].DB_MAX_OUTPUT_PORT_TYPE
+led2 <= cnt0[2].DB_MAX_OUTPUT_PORT_TYPE
+led3 <= cnt0[3].DB_MAX_OUTPUT_PORT_TYPE
+led4 <= cnt0[4].DB_MAX_OUTPUT_PORT_TYPE
+led5 <= cnt0[5].DB_MAX_OUTPUT_PORT_TYPE
+btn0 => cnt0[0].CLK
+btn0 => cnt0[1].CLK
+btn0 => cnt0[2].CLK
+btn0 => cnt0[3].CLK
+btn0 => cnt0[4].CLK
+btn0 => cnt0[5].CLK
+btn0 => cnt0[6].CLK
+btn0 => cnt0[7].CLK
+btn0 => cnt0[8].CLK
+btn0 => cnt0[9].CLK
+btn0 => cnt0[10].CLK
+btn0 => cnt0[11].CLK
+btn0 => cnt0[12].CLK
+btn0 => cnt0[13].CLK
+btn0 => cnt0[14].CLK
+btn0 => cnt0[15].CLK
+btn0 => cnt0[16].CLK
+btn0 => cnt0[17].CLK
+btn0 => cnt0[18].CLK
+btn0 => cnt0[19].CLK
+btn0 => cnt0[20].CLK
+btn0 => cnt0[21].CLK
+btn0 => cnt0[22].CLK
+btn0 => cnt0[23].CLK
+btn0 => cnt0[24].CLK
+btn0 => cnt0[25].CLK
+btn0 => cnt0[26].CLK
+btn0 => cnt0[27].CLK
+btn0 => cnt0[28].CLK
+btn0 => cnt0[29].CLK
+btn0 => cnt0[30].CLK
+btn0 => cnt0[31].CLK
+clk => ~NO_FANOUT~
+
+

@@ -1,5 +1,5 @@
 Fitter report for fpga
-Mon Feb 13 10:15:34 2023
+Mon Feb 20 11:06:49 2023
 Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
@@ -31,6 +31,7 @@ Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
  23. Fitter Device Options
  24. Operating Settings and Conditions
  25. Fitter Messages
+ 26. Fitter Suppressed Messages
 
 
 
@@ -57,7 +58,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Mon Feb 13 10:15:34 2023       ;
+; Fitter Status                   ; Successful - Mon Feb 20 11:06:49 2023       ;
 ; Quartus Prime Version           ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
 ; Revision Name                   ; fpga                                        ;
 ; Top-level Entity Name           ; ex6                                         ;
@@ -195,7 +196,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/output_files/fpga.pin.
+The pin-out file can be found in /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/output_files/fpga.pin.
 
 
 +------------------------------------------------------------------------------------------+
@@ -1174,10 +1175,17 @@ Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:02
+Info (144001): Generated suppressed messages file /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/output_files/fpga.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 1529 megabytes
-    Info: Processing ended: Mon Feb 13 10:15:34 2023
+    Info: Peak virtual memory: 1527 megabytes
+    Info: Processing ended: Mon Feb 20 11:06:49 2023
     Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Total CPU time (on all processors): 00:00:21
+
+
++----------------------------+
+; Fitter Suppressed Messages ;
++----------------------------+
+The suppressed messages can be found in /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/output_files/fpga.fit.smsg.
 
 

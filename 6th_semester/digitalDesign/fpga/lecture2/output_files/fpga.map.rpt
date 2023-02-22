@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fpga
-Mon Feb 13 10:15:20 2023
+Mon Feb 20 11:06:35 2023
 Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
@@ -43,7 +43,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Feb 13 10:15:20 2023       ;
+; Analysis & Synthesis Status     ; Successful - Mon Feb 20 11:06:35 2023       ;
 ; Quartus Prime Version           ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
 ; Revision Name                   ; fpga                                        ;
 ; Top-level Entity Name           ; ex6                                         ;
@@ -166,13 +166,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                          ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                   ; Library ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------+---------+
-; ex6.vhd                          ; yes             ; User VHDL File  ; /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex6.vhd ;         ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+; ex6.vhd                          ; yes             ; User VHDL File  ; /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex6.vhd ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -260,31 +260,31 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
-    Info: Processing started: Mon Feb 13 10:15:13 2023
+    Info: Processing started: Mon Feb 20 11:06:27 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fpga -c fpga
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file ex5.vhd
-    Info (12022): Found design unit 1: ex5-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex5.vhd Line: 12
-    Info (12023): Found entity 1: ex5 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex5.vhd Line: 4
+    Info (12022): Found design unit 1: ex5-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex5.vhd Line: 12
+    Info (12023): Found entity 1: ex5 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex5.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ex4_xor.vhd
-    Info (12022): Found design unit 1: ex4_xor-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex4_xor.vhd Line: 11
-    Info (12023): Found entity 1: ex4_xor File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex4_xor.vhd Line: 4
+    Info (12022): Found design unit 1: ex4_xor-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex4_xor.vhd Line: 11
+    Info (12023): Found entity 1: ex4_xor File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex4_xor.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ex6.vhd
-    Info (12022): Found design unit 1: ex6-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex6.vhd Line: 11
-    Info (12023): Found entity 1: ex6 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex6.vhd Line: 4
+    Info (12022): Found design unit 1: ex6-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex6.vhd Line: 11
+    Info (12023): Found entity 1: ex6 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex6.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ex2.vhd
-    Info (12022): Found design unit 1: ex2-Behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex2.vhd Line: 14
-    Info (12023): Found entity 1: ex2 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex2.vhd Line: 4
+    Info (12022): Found design unit 1: ex2-Behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex2.vhd Line: 14
+    Info (12023): Found entity 1: ex2 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex2.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ex4_or.vhd
-    Info (12022): Found design unit 1: ex4_or-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex4_or.vhd Line: 11
-    Info (12023): Found entity 1: ex4_or File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex4_or.vhd Line: 4
+    Info (12022): Found design unit 1: ex4_or-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex4_or.vhd Line: 11
+    Info (12023): Found entity 1: ex4_or File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex4_or.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ex3.vhd
-    Info (12022): Found design unit 1: ex3-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex3.vhd Line: 11
-    Info (12023): Found entity 1: ex3 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex3.vhd Line: 4
+    Info (12022): Found design unit 1: ex3-behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex3.vhd Line: 11
+    Info (12023): Found entity 1: ex3 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex3.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ex1.vhd
-    Info (12022): Found design unit 1: ex1-Behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex1.vhd Line: 16
-    Info (12023): Found entity 1: ex1 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/ex1.vhd Line: 4
+    Info (12022): Found design unit 1: ex1-Behavioral File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex1.vhd Line: 16
+    Info (12023): Found entity 1: ex1 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture2/ex1.vhd Line: 4
 Info (12127): Elaborating entity "ex6" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -294,9 +294,9 @@ Info (21057): Implemented 19 device resources after synthesis - the final resour
     Info (21059): Implemented 5 output pins
     Info (21061): Implemented 6 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 494 megabytes
-    Info: Processing ended: Mon Feb 13 10:15:20 2023
-    Info: Elapsed time: 00:00:07
+    Info: Peak virtual memory: 489 megabytes
+    Info: Processing ended: Mon Feb 20 11:06:35 2023
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:18
 
 
