@@ -13,7 +13,7 @@ architecture rtl of ex3 is
     signal state : state_type := r;
     signal counter : integer := 1;
     signal timer : std_logic := 0;
-    constant frequency : integer := 5000000;
+    constant frequency : integer := 5000000; -- Hz
 begin
     
     process(clk) is begin
