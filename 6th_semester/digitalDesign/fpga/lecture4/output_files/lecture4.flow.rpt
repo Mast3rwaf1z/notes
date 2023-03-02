@@ -1,5 +1,5 @@
 Flow report for lecture4
-Tue Feb 21 15:19:23 2023
+Thu Feb 23 14:50:59 2023
 Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
@@ -41,16 +41,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Feb 21 15:19:18 2023       ;
+; Flow Status                     ; Successful - Thu Feb 23 14:50:55 2023       ;
 ; Quartus Prime Version           ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
 ; Revision Name                   ; lecture4                                    ;
-; Top-level Entity Name           ; ex3                                         ;
+; Top-level Entity Name           ; ex2                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CEBA4F23C7                                 ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 3 / 18,480 ( < 1 % )                        ;
-; Total registers                 ; 8                                           ;
-; Total pins                      ; 10 / 224 ( 4 % )                            ;
+; Logic utilization (in ALMs)     ; 2 / 18,480 ( < 1 % )                        ;
+; Total registers                 ; 5                                           ;
+; Total pins                      ; 6 / 224 ( 3 % )                             ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                       ;
 ; Total DSP Blocks                ; 0 / 66 ( 0 % )                              ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/21/2023 15:18:52 ;
+; Start date & time ; 02/23/2023 14:50:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lecture4            ;
 +-------------------+---------------------+
@@ -79,16 +79,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 202904460675938.167698913204678        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 202904460675938.167716023005225        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; ex3         ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; ex3         ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; ex3         ; Top        ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; ex2         ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; ex2         ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; ex2         ; Top        ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
-; TOP_LEVEL_ENTITY                    ; ex3                                    ; lecture4      ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; ex2                                    ; lecture4      ; --          ; --         ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
@@ -97,11 +97,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 490 MB              ; 00:00:18                           ;
-; Fitter               ; 00:00:14     ; 1.0                     ; 1536 MB             ; 00:00:22                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 497 MB              ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.0                     ; 746 MB              ; 00:00:03                           ;
-; Total                ; 00:00:28     ; --                      ; --                  ; 00:00:46                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 493 MB              ; 00:00:17                           ;
+; Fitter               ; 00:00:13     ; 1.0                     ; 1538 MB             ; 00:00:21                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 496 MB              ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.0                     ; 746 MB              ; 00:00:03                           ;
+; Total                ; 00:00:26     ; --                      ; --                  ; 00:00:44                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Tue Feb 21 15:18:59 2023
+Analysis & Synthesis Status : Successful - Thu Feb 23 14:50:37 2023
 Quartus Prime Version : 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 Revision Name : lecture4
-Top-level Entity Name : ex3
+Top-level Entity Name : ex2
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 8
-Total pins : 10
+Total registers : 4
+Total pins : 6
 Total virtual pins : 0
 Total block memory bits : 0
 Total DSP Blocks : 0

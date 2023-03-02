@@ -2,68 +2,52 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1100mV 85C Model Setup 'readEnable'
-Slack : -6.711
-TNS   : -26.803
-
-Type  : Slow 1100mV 85C Model Hold 'readEnable'
-Slack : 1.099
+Type  : Slow 1100mV 85C Model Setup 'btn0'
+Slack : 0.159
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'readEnable'
-Slack : -0.538
-TNS   : -3.728
-
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'writeEnable'
-Slack : -0.538
-TNS   : -3.226
-
-Type  : Slow 1100mV 0C Model Setup 'readEnable'
-Slack : -6.468
-TNS   : -25.825
-
-Type  : Slow 1100mV 0C Model Hold 'readEnable'
-Slack : 0.842
+Type  : Slow 1100mV 85C Model Hold 'btn0'
+Slack : 0.248
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'readEnable'
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'btn0'
 Slack : -0.538
-TNS   : -3.364
+TNS   : -4.613
 
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'writeEnable'
-Slack : -0.538
-TNS   : -3.176
-
-Type  : Fast 1100mV 85C Model Setup 'readEnable'
-Slack : -3.385
-TNS   : -13.186
-
-Type  : Fast 1100mV 85C Model Hold 'readEnable'
-Slack : 0.848
+Type  : Slow 1100mV 0C Model Setup 'btn0'
+Slack : 0.155
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'readEnable'
-Slack : -0.363
-TNS   : -1.748
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'writeEnable'
-Slack : -0.287
-TNS   : -1.259
-
-Type  : Fast 1100mV 0C Model Setup 'readEnable'
-Slack : -2.936
-TNS   : -11.542
-
-Type  : Fast 1100mV 0C Model Hold 'readEnable'
-Slack : 0.594
+Type  : Slow 1100mV 0C Model Hold 'btn0'
+Slack : 0.232
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'readEnable'
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'btn0'
+Slack : -0.538
+TNS   : -4.152
+
+Type  : Fast 1100mV 85C Model Setup 'btn0'
+Slack : 0.561
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'btn0'
+Slack : 0.130
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'btn0'
+Slack : -0.362
+TNS   : -2.115
+
+Type  : Fast 1100mV 0C Model Setup 'btn0'
+Slack : 0.583
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'btn0'
+Slack : 0.116
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'btn0'
 Slack : -0.325
-TNS   : -1.486
-
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'writeEnable'
-Slack : -0.290
-TNS   : -1.284
+TNS   : -1.806
 
 ------------------------------------------------------------

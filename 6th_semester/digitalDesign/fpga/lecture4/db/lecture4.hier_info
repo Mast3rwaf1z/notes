@@ -1,19 +1,12 @@
-|ex3
-readEnable => led3~reg0.CLK
-readEnable => led2~reg0.CLK
-readEnable => led1~reg0.CLK
-readEnable => led0~reg0.CLK
-writeEnable => memory[0].CLK
-writeEnable => memory[1].CLK
-writeEnable => memory[2].CLK
-writeEnable => memory[3].CLK
-sw0 => memory[0].DATAIN
-sw1 => memory[1].DATAIN
-sw2 => memory[2].DATAIN
-sw3 => memory[3].DATAIN
-led0 <= led0~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led1 <= led1~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led2 <= led2~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led3 <= led3~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|ex2
+leds[0] << output[0].DB_MAX_OUTPUT_PORT_TYPE
+leds[1] << output[1].DB_MAX_OUTPUT_PORT_TYPE
+leds[2] << output[2].DB_MAX_OUTPUT_PORT_TYPE
+leds[3] << output[3].DB_MAX_OUTPUT_PORT_TYPE
+sw0 => output[0].DATAIN
+btn0 => output[0].CLK
+btn0 => output[1].CLK
+btn0 => output[2].CLK
+btn0 => output[3].CLK
 
 
