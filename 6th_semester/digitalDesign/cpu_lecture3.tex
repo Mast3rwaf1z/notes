@@ -1,0 +1,34 @@
+\section*{CPU stuff lecture 3}
+\subsection*{Exercises}
+\begin{enumerate}
+    \item Given the memory values below and a one-address machine with an accumulator, what values do the following instructions load into the machine
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            addr & value \\\hline
+            20 & 40 \\\hline
+            30 & 50 \\\hline
+            40 & 60 \\\hline
+            50 & 70 \\\hline
+        \end{tabular}
+    \end{table}
+
+    result:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|}
+            \hline
+            instruction & accumulator value \\\hline
+            LOAD IMMEDIATE 20 & 20 \\\hline
+            LOAD DIRECT 20 & 40 \\\hline
+            LOAD INDIRECT 20 & 40 \\\hline
+            LOAD IMMEDIATE 30 & 30 \\\hline
+            LOAD DIRECT 30 & 50 \\\hline
+            LOAD INDIRECT 30 & 50 \\\hline
+        \end{tabular}
+    \end{table}
+    \item Compute 0-, 1-, 2-, and 3-address machines by writing programs to compute $X = \frac{A + B \times C}{D-E \times F}$
+    
+\end{enumerate}
