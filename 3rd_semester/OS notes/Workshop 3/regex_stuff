@@ -1,0 +1,30 @@
+A -> aB | bC
+B -> aC 
+C -> bB
+
+A -> aB
+A -> bC
+B -> aC
+C -> bB
+
+A -> cB
+B -> b
+
+A -> Bc
+B -> b
+
+
+
+
+A -> 1A0 | 0A1 | AA | epsilon
+
+
+
+110001
+11e00n      0e1
+11A00       0A1
+1A0         A
+A           A
+A
+
+

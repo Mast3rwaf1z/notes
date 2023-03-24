@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/bbfs.dir/bbfs.c.o CMakeFiles/bbfs.dir/log.c.o  -o bbfs  -lfuse 

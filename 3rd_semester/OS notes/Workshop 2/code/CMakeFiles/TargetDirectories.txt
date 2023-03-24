@@ -1,0 +1,3 @@
+/home/mikkel/Desktop/OS/Workshop2/CMakeFiles/rebuild_cache.dir
+/home/mikkel/Desktop/OS/Workshop2/CMakeFiles/edit_cache.dir
+/home/mikkel/Desktop/OS/Workshop2/CMakeFiles/bbfs.dir

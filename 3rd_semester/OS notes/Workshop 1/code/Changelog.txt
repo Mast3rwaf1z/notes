@@ -1,0 +1,3 @@
+Sent strings through FIFO with correct format
+Added more error handling to both stubs
+Make all now compiles both files
