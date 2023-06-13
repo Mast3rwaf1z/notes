@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lecture7
-Thu Mar  2 09:42:05 2023
+Tue Jun 13 14:53:29 2023
 Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
@@ -10,15 +10,7 @@ Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |ex3|state
-  9. General Register Statistics
- 10. Inverted Register Statistics
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
 
 
 
@@ -42,27 +34,22 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Mar  2 09:42:05 2023       ;
-; Quartus Prime Version           ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
-; Revision Name                   ; lecture7                                    ;
-; Top-level Entity Name           ; ex3                                         ;
-; Family                          ; Cyclone V                                   ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 40                                          ;
-; Total pins                      ; 5                                           ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0                                           ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 0                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Tue Jun 13 14:53:29 2023           ;
+; Quartus Prime Version       ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
+; Revision Name               ; lecture7                                    ;
+; Top-level Entity Name       ; ex44                                        ;
+; Family                      ; Cyclone V                                   ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -71,7 +58,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CEBA4F23C7        ;                    ;
-; Top-level entity name                                                           ; ex3                ; lecture7           ;
+; Top-level entity name                                                           ; ex44               ; lecture7           ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -161,128 +148,11 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                   ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                            ; Library ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
-; ex3.vhd                          ; yes             ; User VHDL File  ; /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex3.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
-
-
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 26       ;
-;                                             ;          ;
-; Combinational ALUT usage for logic          ; 45       ;
-;     -- 7 input functions                    ; 0        ;
-;     -- 6 input functions                    ; 6        ;
-;     -- 5 input functions                    ; 0        ;
-;     -- 4 input functions                    ; 0        ;
-;     -- <=3 input functions                  ; 39       ;
-;                                             ;          ;
-; Dedicated logic registers                   ; 40       ;
-;                                             ;          ;
-; I/O pins                                    ; 5        ;
-;                                             ;          ;
-; Total DSP Blocks                            ; 0        ;
-;                                             ;          ;
-; Maximum fan-out node                        ; Equal0~6 ;
-; Maximum fan-out                             ; 33       ;
-; Total fan-out                               ; 231      ;
-; Average fan-out                             ; 2.43     ;
-+---------------------------------------------+----------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |ex3                       ; 45 (45)             ; 40 (40)                   ; 0                 ; 0          ; 5    ; 0            ; |ex3                ; ex3         ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+---------------------------------------------------+
-; State Machine - |ex3|state                        ;
-+----------+---------+----------+---------+---------+
-; Name     ; state.y ; state.ry ; state.g ; state.r ;
-+----------+---------+----------+---------+---------+
-; state.r  ; 0       ; 0        ; 0       ; 0       ;
-; state.g  ; 0       ; 0        ; 1       ; 1       ;
-; state.ry ; 0       ; 1        ; 0       ; 1       ;
-; state.y  ; 1       ; 0        ; 0       ; 1       ;
-+----------+---------+----------+---------+---------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 40    ;
-; Number of registers using Synchronous Clear  ; 31    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; counter[0]                             ; 2       ;
-; Total number of inverted registers = 1 ;         ;
-+----------------------------------------+---------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; arriav_ff             ; 40                          ;
-;     SCLR              ; 31                          ;
-;     plain             ; 9                           ;
-; arriav_lcell_comb     ; 45                          ;
-;     arith             ; 32                          ;
-;         1 data inputs ; 32                          ;
-;     normal            ; 13                          ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 5                           ;
-;         6 data inputs ; 6                           ;
-; boundary_port         ; 5                           ;
-;                       ;                             ;
-; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 2.97                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
 
 
 +-------------------------------+
@@ -291,25 +161,67 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
-    Info: Processing started: Thu Mar  2 09:41:58 2023
+    Info: Processing started: Tue Jun 13 14:53:22 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lecture7 -c lecture7
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file ex3.vhd
     Info (12022): Found design unit 1: ex3-rtl File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex3.vhd Line: 12
     Info (12023): Found entity 1: ex3 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex3.vhd Line: 4
-Info (12127): Elaborating entity "ex3" for the top level hierarchy
-Info (286030): Timing-Driven Synthesis is running
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 53 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 48 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 511 megabytes
-    Info: Processing ended: Thu Mar  2 09:42:05 2023
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:18
+Info (12021): Found 2 design units, including 1 entities, in source file ex4.vhd
+    Info (12022): Found design unit 1: ex4-arch File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex4.vhd Line: 13
+    Info (12023): Found entity 1: ex4 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex4.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ex43.vhd
+    Info (12022): Found design unit 1: ex43-arch File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex43.vhd Line: 12
+    Info (12023): Found entity 1: ex43 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex43.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ex44.vhd
+    Info (12022): Found design unit 1: ex44-arch File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 20
+    Info (12023): Found entity 1: ex44 File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 5
+Info (12127): Elaborating entity "ex44" for the top level hierarchy
+Warning (10873): Using initial value X (don't care) for net "light[2]" at ex44.vhd(16) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 16
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[0] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[0]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[1] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[1]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[2] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[2]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[3] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[3]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[4] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[4]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[5] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[5]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[6] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[6]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[7] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[7]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[8] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[8]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[9] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[9]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[10] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[10]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[11] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[11]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[12] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[12]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[13] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[13]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[14] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[14]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[15] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[15]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[16] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[16]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[17] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[17]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (10820): Netlist error at ex44.vhd(94): can't infer register for counter[18] because its behavior depends on the edges of multiple distinct clocks File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 94
+Info (10041): Inferred latch for "counter[18]" at ex44.vhd(93) File: /home/mast3r/git/notes/6th_semester/digitalDesign/fpga/lecture7/ex44.vhd Line: 93
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 20 errors, 2 warnings
+    Error: Peak virtual memory: 482 megabytes
+    Error: Processing ended: Tue Jun 13 14:53:29 2023
+    Error: Elapsed time: 00:00:07
+    Error: Total CPU time (on all processors): 00:00:17
 
 

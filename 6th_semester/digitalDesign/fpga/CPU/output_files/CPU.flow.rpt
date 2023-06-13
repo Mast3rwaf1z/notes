@@ -1,5 +1,5 @@
 Flow report for CPU
-Sat Jun 10 19:35:39 2023
+Mon Jun 12 15:22:29 2023
 Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
@@ -41,19 +41,19 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Sat Jun 10 19:35:35 2023       ;
+; Flow Status                     ; Successful - Mon Jun 12 15:22:24 2023       ;
 ; Quartus Prime Version           ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
 ; Family                          ; Cyclone V                                   ;
-; Device                          ; 5CEBA2F17A7                                 ;
+; Device                          ; 5CEBA4F23C7                                 ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 6 / 9,430 ( < 1 % )                         ;
-; Total registers                 ; 15                                          ;
-; Total pins                      ; 17 / 128 ( 13 % )                           ;
+; Logic utilization (in ALMs)     ; 44 / 18,480 ( < 1 % )                       ;
+; Total registers                 ; 58                                          ;
+; Total pins                      ; 18 / 224 ( 8 % )                            ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0 / 1,802,240 ( 0 % )                       ;
-; Total DSP Blocks                ; 0 / 25 ( 0 % )                              ;
+; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                       ;
+; Total DSP Blocks                ; 0 / 66 ( 0 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
 ; Total HSSI TX PCSs              ; 0                                           ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/10/2023 19:35:12 ;
+; Start date & time ; 06/12/2023 15:21:56 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; CPU                 ;
 +-------------------+---------------------+
@@ -79,9 +79,9 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 929352953605.168641851206925           ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 125                                    ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; -40                                    ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 202904460675938.168657611632822        ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -94,11 +94,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:05     ; 1.0                     ; 553 MB              ; 00:00:12                           ;
-; Fitter               ; 00:00:13     ; 1.0                     ; 2088 MB             ; 00:00:45                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 503 MB              ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.0                     ; 864 MB              ; 00:00:03                           ;
-; Total                ; 00:00:23     ; --                      ; --                  ; 00:01:02                           ;
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 491 MB              ; 00:00:19                           ;
+; Fitter               ; 00:00:15     ; 1.0                     ; 1590 MB             ; 00:00:27                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 502 MB              ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.1                     ; 775 MB              ; 00:00:04                           ;
+; Total                ; 00:00:30     ; --                      ; --                  ; 00:00:53                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -107,10 +107,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; desktop          ; Arch Linux ; Arch Linux ; x86_64         ;
-; Fitter               ; desktop          ; Arch Linux ; Arch Linux ; x86_64         ;
-; Assembler            ; desktop          ; Arch Linux ; Arch Linux ; x86_64         ;
-; Timing Analyzer      ; desktop          ; Arch Linux ; Arch Linux ; x86_64         ;
+; Analysis & Synthesis ; laptop           ; Arch Linux ; Arch Linux ; x86_64         ;
+; Fitter               ; laptop           ; Arch Linux ; Arch Linux ; x86_64         ;
+; Assembler            ; laptop           ; Arch Linux ; Arch Linux ; x86_64         ;
+; Timing Analyzer      ; laptop           ; Arch Linux ; Arch Linux ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

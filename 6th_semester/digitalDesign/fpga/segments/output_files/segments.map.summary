@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Sun Jun 11 04:00:55 2023
+Analysis & Synthesis Status : Successful - Mon Jun 12 17:15:37 2023
 Quartus Prime Version : 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 Revision Name : segments
 Top-level Entity Name : segments
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 0
-Total pins : 43
+Total registers : 108
+Total pins : 44
 Total virtual pins : 0
 Total block memory bits : 0
 Total DSP Blocks : 0

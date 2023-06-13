@@ -1,7 +1,7 @@
 
-State Machine - |ex3|state
-Name state.y state.ry state.g state.r 
-state.r 0 0 0 0 
-state.g 0 0 1 1 
-state.ry 0 1 0 1 
-state.y 1 0 0 1 
+State Machine - |ex44|state
+Name state.finishing state.idle state.exiting state.entering 
+state.entering 0 0 0 0 
+state.exiting 0 0 1 1 
+state.idle 0 1 0 1 
+state.finishing 1 0 0 1 

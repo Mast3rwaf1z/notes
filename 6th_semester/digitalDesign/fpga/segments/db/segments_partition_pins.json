@@ -2,7 +2,184 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : []
+			"pins" : [
+				{
+					"name" : "digit0[6]",
+					"strict" : false
+				},
+				{
+					"name" : "digit0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digit0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digit0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digit0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digit0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digit0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digit1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digit2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digit3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[6]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digit4[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[6]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digit5[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ctrl",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				}
+			]
 		}
 	]
 }
