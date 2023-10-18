@@ -1,0 +1,1 @@
+måske se på at gøre systemet configurable, sådan at vi kan vælge hvor ofte der bliver målt, for at kunne justere strømforbrug.
