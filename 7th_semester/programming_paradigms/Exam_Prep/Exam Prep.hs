@@ -213,3 +213,33 @@ sums' m n = concat [[x+y | x <- [1..m]] | y <- [1..n]]
 
 -- lecture 5
 -- pre lecture exercises
+-- exercise 1
+replicate' :: Int -> a -> [a]
+replicate' 0 _ = []
+replicate' n x = x : replicate' (n-1) x
+
+-- exercise 2
+improve' :: [a] -> [a]
+improve' [] = []
+improve' [x] = [x]
+improve' (x1:(x2:xs)) = x1 : improve' xs
+
+-- lecture exercises
+-- exercise 1
+rev :: [a] -> [a]
+rev [] = []
+rev [a] = [a]
+rev (x:xs) = rev xs ++ [x]
+
+-- exercise 2
+mylast :: [a] -> a
+mylast [a] = a
+mylast (x:xs) = mylast xs
+
+-- exercise 3
+isolate :: Eq a => [a] -> a -> ([a], [a])
+isolate [] _ = ([], [])
+isolate (x:xs) k | x == k    = (remainder, x:isolated)
+                 | otherwise = (x:remainder, isolated)
+    where
+        (remainder, isolated) = isolate xs k
