@@ -248,4 +248,42 @@ isolate (x:xs) k | x == k    = (remainder, x:isolated)
 wrapup :: Eq a => [a] -> [[a]]
 wrapup [] = []
 wrapup [a] = [[a]]
-wrapup (x:xs) = 
+wrapup (x:xs) = isolated : wrapup remainder
+    where
+        (remainder, isolated) = isolate (x:xs) x
+
+-- exercise 5
+{--
+triples :: Num a => [(a,a,a)] -> ([a], [a], [a])
+triples [] = ()
+triples [(a,b,c)] = ([a], [b], [c])
+triples (x:xs, y:ys, z:zs) = [x,y,z] : Triples [(xs,ys,zs)]
+--}
+
+triples :: [(a, b, c)] -> ([a], [b], [c])
+triples [] = ([], [], [])
+triples ((a,b,c):xs) = (a:as, b:bs, c:cs)
+    where
+        (as, bs, cs) = triples xs
+
+-- exercise a
+rle :: Eq a => [a] -> [(a, Int)]
+rle [] = []
+rle (x:xs) = (x, cnt) : rle remainder
+    where
+        counter [] _ = 0
+        counter (x:xs) n = if x == n then counter xs n else 1
+        cnt = 1 + counter xs x
+        getRemainder [] _ = []
+        getRemainder (x:xs) n = if x == n then getRemainder xs n else x:xs
+        remainder = getRemainder xs x
+
+-- exercise b
+amy :: (a -> Bool) -> [a] -> Bool
+amy _ [] = False
+amy p (x:xs) = p x || amy p xs
+
+-- exercise c
+frequencies :: String -> [(Char, Int)]
+frequencies "" = []
+--frequencies (x:xs) = [(x, cnt)]
