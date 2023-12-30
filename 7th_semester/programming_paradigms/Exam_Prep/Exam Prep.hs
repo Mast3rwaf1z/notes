@@ -243,3 +243,9 @@ isolate (x:xs) k | x == k    = (remainder, x:isolated)
                  | otherwise = (x:remainder, isolated)
     where
         (remainder, isolated) = isolate xs k
+
+-- exercise 4
+wrapup :: Eq a => [a] -> [[a]]
+wrapup [] = []
+wrapup [a] = [[a]]
+wrapup (x:xs) = 
