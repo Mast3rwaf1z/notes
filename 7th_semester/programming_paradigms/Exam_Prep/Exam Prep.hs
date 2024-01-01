@@ -269,14 +269,19 @@ triples ((a,b,c):xs) = (a:as, b:bs, c:cs)
 -- exercise a
 rle :: Eq a => [a] -> [(a, Int)]
 rle [] = []
-rle (x:xs) = (x, cnt) : rle remainder
+rle (x:xs) = (x, cnt) : rle next
     where
-        counter [] _ = 0
-        counter (x:xs) n = if x == n then counter xs n else 1
-        cnt = 1 + counter xs x
-        getRemainder [] _ = []
-        getRemainder (x:xs) n = if x == n then getRemainder xs n else x:xs
-        remainder = getRemainder xs x
+        getCnt :: Eq a => a -> [a] -> [a]
+        getCnt _ [] = []
+        getCnt y (x:xs) | x == y    = x:getCnt y xs
+                        | otherwise = []
+        cnt = length (getCnt x (x:xs))
+
+        getNext :: Eq a => a -> [a] -> [a]
+        getNext _ [] = []
+        getNext y (x:xs) | y == x    = getNext y xs
+                         | otherwise = x:xs
+        next = getNext x (x:xs)
 
 -- exercise b
 amy :: (a -> Bool) -> [a] -> Bool
@@ -286,4 +291,120 @@ amy p (x:xs) = p x || amy p xs
 -- exercise c
 frequencies :: String -> [(Char, Int)]
 frequencies "" = []
---frequencies (x:xs) = [(x, cnt)]
+frequencies (x:xs) = (x, cnt) : frequencies remainder
+    where
+        cnt = 1 + length [x' | x' <- xs, x' == x]
+        remainder = [x' | x' <- xs, x' /= x]
+
+-- lecture 6
+-- pre lecture
+-- exercise 1
+positions :: Enum a => [a] -> [Int]
+positions = map (\x -> fromEnum x - 96)
+
+-- exercise 2
+sumsq :: Integral a => a -> a
+sumsq n = foldr (\x -> (\y -> x + (y * y))) 0 [1..n]
+
+-- lecture exercises
+-- exercise 1
+
+-- lecture 7
+-- video stuff
+type Coordinate = (Int, Int)
+flip :: Coordinate -> Coordinate
+flip (x,y) = (y,x)
+
+abs' :: Coordinate -> Coordinate
+abs' (x,y) = (x', y')
+    where
+        x' | x >= 0    = x
+           | otherwise = -x
+        y' | y >= 0    = y
+           | otherwise = -x
+
+
+type Complex = (Int, Int)
+addComplex :: Complex -> Complex -> Complex
+addComplex (r, i) (r', i') = (r+r', i+i')
+
+subComplex :: Complex -> Complex -> Complex
+subComplex (r, i) (r', i') = (r-r', i-i')
+
+multComplex :: Complex -> Complex -> Complex
+multComplex (a, b) (c, d) = (a*c - b*d, a*d + b*c)
+
+divComplex :: Complex -> Complex -> Complex
+divComplex (a,b) (c,d) = (div (a*c + b*d) (c * c + d * d), div (b * c - a * d) (c * c + d * d))
+
+printComplex :: Complex -> IO ()
+printComplex (r, i) = putStrLn $ "" ++ show r ++ sign ++ show abs ++ "i"
+    where
+        sign | i >= 0    = "+"
+             | otherwise = "-"
+        abs  | i >= 0    = i
+             | otherwise = -i
+
+data Direction = Right' | Left' | Up | Down
+
+flipDirection :: Direction -> Direction
+flipDirection Right' = Left'
+flipDirection Left' = Right'
+flipDirection Up = Down
+flipDirection Down = Up
+
+data Container = Human Int | Animal Float Float
+convertContainer :: Container -> Container
+convertContainer (Human x) = Animal 1.0 1.0
+convertContainer (Animal x y) = Human 1
+
+-- pre lecture
+-- exercise 1
+data Unary = Z | I Unary
+unary2int :: Unary -> Integer
+unary2int Z = 0
+unary2int (I u) = 1 + unary2int u
+
+
+-- exercise 2
+data Tree a = Leaf a | Node (Tree a) a (Tree a)
+
+least :: (Ord a) => Tree a -> a
+least (Leaf a) = a
+least (Node a b c) = value
+    where
+        value | b <= least a && b <= least c = b
+              | least a >= least c           = least c
+              | otherwise                    = least a
+
+-- lecture exercises
+-- exercise 1
+data Aexp = N Int | X String | Add Aexp Aexp | Mult Aexp Aexp
+
+-- exercise 2
+type Assoc k v = [(k, v)]
+find :: (Eq a) => a -> [(a, v)] -> v
+find k ((k', v'):xs) | k == k'   = v'
+                     | otherwise = find k xs
+
+eval :: Aexp -> Assoc String Int -> Int
+eval (Mult e1 e2) lst = (eval e1 lst) * (eval e2 lst)
+eval (N v) lst = v
+eval (X v) lst = find v lst
+eval (Add e1 e2) lst = (eval e1 lst) + (eval e2 lst)
+
+-- exercise 3
+data File = Root String [File] | Directory String [File] | File String String
+-- This solution makes a lot more sense because what does a directory do? what is a directory? a directory is essentially a file, so i renamed it.
+-- My file data type can be either a directory or a file, a directory has two parameters, its parent and its children, a file has two, its parent and its content
+
+filesystem = Root "/" [Directory "usr" [], Directory "srv" [], Directory "etc" [], Directory "boot" [File "kernel" "some-binary-data"]]
+
+-- exercise 4
+data Tree' a = Leaf' a | Empty' | Node' (Tree' a) a (Tree' a) deriving Show
+insert :: Ord a => Tree' a -> a -> Tree' a
+insert Empty' x = Leaf' x
+insert (Leaf' a) x = Node' (Leaf' x) a Empty'
+insert (Node' Empty' v Empty') x = Node' (Leaf' x) v Empty'
+insert (Node' y v Empty') x = Node' y v (Leaf' x)
+insert (Node' a b c) x = Node' (insert a x) b c
