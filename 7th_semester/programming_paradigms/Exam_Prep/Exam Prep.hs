@@ -402,9 +402,119 @@ filesystem = Root "/" [Directory "usr" [], Directory "srv" [], Directory "etc" [
 
 -- exercise 4
 data Tree' a = Leaf' a | Empty' | Node' (Tree' a) a (Tree' a) deriving Show
-insert :: Ord a => Tree' a -> a -> Tree' a
+insert :: Tree' a -> a -> Tree' a
 insert Empty' x = Leaf' x
 insert (Leaf' a) x = Node' (Leaf' x) a Empty'
 insert (Node' Empty' v Empty') x = Node' (Leaf' x) v Empty'
 insert (Node' y v Empty') x = Node' y v (Leaf' x)
 insert (Node' a b c) x = Node' (insert a x) b c
+
+-- exercise 5
+type InVector = (Int,Int)
+
+(&&&) :: InVector -> InVector -> InVector
+(x1, y1) &&& (x2, y2) = (x1 + x2, y1+y2)
+
+(***) :: InVector -> InVector -> Int
+(x1, y1) *** (x2, y2) = (x1*x2) + (y1*y2)
+
+-- exercise a
+leaves :: Tree' a -> Int
+leaves (Leaf' _) = 1
+leaves Empty' = 0
+leaves (Node' a v b) = 1 + leaves a + leaves b
+
+balanced :: Tree' a -> Bool
+balanced (Leaf' _) = True
+balanced Empty' = True
+balanced (Node' a v b) | leaves a == leaves b     = True
+                       | leaves a == leaves b - 1 = True
+                       | leaves a == leaves b + 1 = True
+                       | otherwise                = False
+
+-- exercise b
+data Prop = Const Bool
+          | Var Char
+          | Not Prop
+          | And Prop Prop
+          | Imply Prop Prop
+          deriving Show
+
+p1 :: Prop
+p1 = And (Var 'A') (Not (Var 'A'))
+
+p2 :: Prop
+p2 = Imply (And (Var 'A') (Var 'B')) (Var 'A')
+
+p3 :: Prop
+p3 = Imply (Var 'A') (And (Var 'A') (Var 'B'))
+
+p4 :: Prop
+p4 = Imply (And (Var 'A') (Imply (Var 'A') (Var 'B'))) (Var 'B')
+
+{--
+    A       |   B       |   A -> B      |   B -> A      |   (A && B) -> A   |   (A && (A -> B)) -> B
+    T       |   T       |   T           |   T           |   T               |   T
+    T       |   F       |   F           |   T           |   T               |   T
+    F       |   T       |   T           |   F           |   T               |   T
+    F       |   F       |   T           |   T           |   T               |   T
+--}
+
+
+type Subst = Assoc Char Bool
+
+eval' :: Subst -> Prop -> Bool
+eval' _ (Const b) = b
+eval' s (Var x) = find x s
+eval' s (Not p) = not (eval' s p)
+eval' s (And p1 p2) = eval' s p1 && eval' s p2
+eval' s (Imply p1 p2) = eval' s p1 <= eval' s p2
+
+vars :: Prop -> [Prop]
+vars (Const b) = []
+vars (Var x) = [Var x]
+vars (Not x) = vars x
+vars (And p1 p2) = vars p1 ++ vars p2
+vars (Imply p1 p2) = vars p1 ++ vars p2
+
+equiv :: Prop -> Prop -> Bool
+equiv (Const a) (Const b) = a == b
+equiv (Var a) (Const b) = False
+equiv (Const b) (Var a) = False
+equiv (Var a) (Var b)   = False
+equiv p1 p2 = all (\x -> eval' x p1 == eval' x p2) substitutions
+    where
+        substitutions = [[('A', True), ('B', True)], [('A', True), ('B', False)], [('A', False), ('B', True)], [('A', False), ('B', False)]]
+
+-- exercise c
+data Expr' = Val' Int
+           | Add' Expr' Expr'
+           deriving Show
+
+
+foldexp :: (Int -> a) -> (a -> a -> a) -> Expr' -> a
+foldexp f _ (Val' a) = f a
+foldexp f g (Add' e1 e2) = g (foldexp f g e1) (foldexp f g e2)
+
+eval'' :: Expr' -> Int
+eval'' = foldexp id (+)
+
+-- exercise d
+data Maybe' a = Just' a | Nothing'
+
+instance Eq a => Eq (Maybe' a) where
+    Just' a == Just' b = a == b
+    Nothing' == Nothing' = True
+    _ == _ = False
+
+-- exercise e
+build :: [a] -> Tree' a
+build [] = Empty'
+build (x:xs) = insert (build xs) x
+
+-- lecture 11
+-- video lecture
+-- pre lecture
+tuple :: Monad m => m a -> m b -> m (a,b)
+
+-- lecture exercises
