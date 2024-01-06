@@ -404,12 +404,18 @@ filesystem = Root "/" [Directory "usr" [], Directory "srv" [], Directory "etc" [
 
 -- exercise 4
 data Tree' a = Leaf' a | Empty' | Node' (Tree' a) a (Tree' a) deriving Show
+leaves :: Tree' a -> Int
+leaves (Leaf' _) = 1
+leaves Empty' = -1
+leaves (Node' a v b) = 1 + leaves a + leaves b
+
 insert :: Tree' a -> a -> Tree' a
 insert Empty' x = Leaf' x
 insert (Leaf' a) x = Node' (Leaf' x) a Empty'
 insert (Node' Empty' v Empty') x = Node' (Leaf' x) v Empty'
 insert (Node' y v Empty') x = Node' y v (Leaf' x)
-insert (Node' a b c) x = Node' (insert a x) b c
+insert (Node' a b c) x | leaves a > leaves c = Node' a b (insert c x)
+                       | otherwise           = Node' (insert a x) b c
 
 -- exercise 5
 type InVector = (Int,Int)
@@ -421,10 +427,6 @@ type InVector = (Int,Int)
 (x1, y1) *** (x2, y2) = (x1*x2) + (y1*y2)
 
 -- exercise a
-leaves :: Tree' a -> Int
-leaves (Leaf' _) = 1
-leaves Empty' = 0
-leaves (Node' a v b) = 1 + leaves a + leaves b
 
 balanced :: Tree' a -> Bool
 balanced (Leaf' _) = True
