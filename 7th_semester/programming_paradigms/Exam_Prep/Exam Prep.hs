@@ -394,7 +394,9 @@ eval (X v) lst = find v lst
 eval (Add e1 e2) lst = (eval e1 lst) + (eval e2 lst)
 
 -- exercise 3
-data File = Root String [File] | Directory String [File] | File String String
+data File = Root String [File]
+          | Directory String [File]
+          | File String String
 -- This solution makes a lot more sense because what does a directory do? what is a directory? a directory is essentially a file, so i renamed it.
 -- My file data type can be either a directory or a file, a directory has two parameters, its parent and its children, a file has two, its parent and its content
 
@@ -512,9 +514,23 @@ build :: [a] -> Tree' a
 build [] = Empty'
 build (x:xs) = insert (build xs) x
 
+-- lecture 10
+-- pre lecture
+-- exercise 1
+data Onion a = Core a | Layer (Onion a) deriving Show
+instance Functor Onion where
+    -- fmap :: (a -> b) -> Onion a -> Onion b
+    fmap g (Core a) = Core (g a)
+    fmap g (Layer a) = Layer (fmap g a)
+
+-- exercise 2
+checkRule1 x = (pure id <*> (Just x)) == Just x
+checkRule2 g x = (pure (g x)) == (pure g <*> pure x)
+
+
 -- lecture 11
 -- video lecture
 -- pre lecture
-tuple :: Monad m => m a -> m b -> m (a,b)
+--tuple :: Monad m => m a -> m b -> m (a,b)
 
 -- lecture exercises
