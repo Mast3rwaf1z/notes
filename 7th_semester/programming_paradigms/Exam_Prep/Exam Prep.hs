@@ -527,12 +527,81 @@ instance Functor Onion where
 
 -- exercise 2
 checkRule1 x = (pure id <*> (Just x)) == Just x
-checkRule2 g x = (pure (g x)) == (pure g <*> pure x)
+--checkRule2 :: (Eq b) => (a -> b) -> a -> Bool
+--checkRule2 g x = (pure (g x)) == (pure g <*> pure x)
+
+-- lecture exercises
+-- exercise 1
+data UTree a = UNode a [UTree a] deriving Show
+instance Functor UTree where
+    -- fmap :: (a -> b) -> UTree a -> UTree b
+    fmap g (UNode a []) = UNode (g a) []
+    fmap g (UNode a xs) = UNode (g a) (map (fmap g) xs)
+
+-- exercise 2
+type R = ()
+
+data List a = List [a] deriving Show
+
+-- exercise 3
+instance Functor List where
+    fmap g (List []) = List []
+    fmap g (List (x:xs)) = List (g x:map g xs)
+
+instance Applicative List where
+    -- pure :: a -> List [a]
+    pure x = List [x]
+    -- (<*>) :: List (a -> b) -> List a -> List b
+    List (x:xs) <*> List ys = List (map x ys ++ (xs <*> ys))
+
+-- exercise 4
+prodthree :: (Num a) => [a] -> [a] -> [a] -> [a]
+prodthree [] _ _ = []
+prodthree _ [] _ = []
+prodthree _ _ [] = []
+prodthree xs ys zs = pure (\x y z -> x * y * z) <*> xs <*> ys <*> zs
+
+-- exercise a
+data Exp a = EVar a | Val Int | EAdd (Exp a) (Exp a) | EMult (Exp a) (Exp a) deriving Show
+
+instance Functor Exp where
+    -- fmap :: (a -> b) -> Exp a -> Exp b
+    fmap g (EVar a) = EVar (g a)
+    fmap g (Val a) = Val a
+    fmap g (EAdd a b) = EAdd (fmap g a) (fmap g b)
+    fmap g (EMult a b) = EMult (fmap g a) (fmap g b)
+
+-- exercise b
+instance Applicative Exp where
+    -- pure :: a -> f a
+    pure = EVar
+    -- (<*>) :: f (a -> b) -> f a -> f b
+    EVar a <*> EVar b = EVar (a b)
+    EVar a <*> Val b = Val b
+    EVar a <*> EAdd b c = EAdd (EVar a <*> b) (EVar a <*> c)
+    EVar a <*> EMult b c = EMult (EVar a <*> b) (EVar a <*> c)
+    EAdd a b <*> c = EAdd (a <*> c) (b <*> c)
+    EMult a b <*> c = EMult (a <*> c) (b <*> c)
+
+-- exercise c
+type Name = String
+type Env = [(Name, Int)]
+fetch :: Name -> Env -> Int
+fetch x env = case lookup x env of
+    Nothing -> error "invalid name"
+    Just v -> v
+
+eEval :: Exp Name -> Env -> Int
+eEval (EVar e) env = find e env
+eEval (Val e) env = e
+eEval (EAdd a b) env = eEval a env + eEval b env
+eEval (EMult a b) env = eEval a env + eEval b env
+
 
 
 -- lecture 11
 -- video lecture
 -- pre lecture
---tuple :: Monad m => m a -> m b -> m (a,b)
+tuple :: Monad m => m a -> m b -> m (a,b)
 
 -- lecture exercises
