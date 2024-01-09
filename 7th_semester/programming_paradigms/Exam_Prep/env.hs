@@ -1,4 +1,4 @@
-import System.Environment
+import System.Environment ( getArgs )
 
 type Command = [String]
 

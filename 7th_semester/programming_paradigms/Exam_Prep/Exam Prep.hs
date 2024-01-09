@@ -602,6 +602,98 @@ eEval (EMult a b) env = eEval a env + eEval b env
 -- lecture 11
 -- video lecture
 -- pre lecture
+-- exercise 1
 tuple :: Monad m => m a -> m b -> m (a,b)
+tuple a b = a >>= \x ->
+            b >>= \y ->
+            return (x, y)
 
+tuple' :: Monad m => m a -> m b -> m (a, b)
+tuple' a b = do
+    x <- a
+    y <- b
+    return (x, y)
+-- exercise 2
+ex2 z s f = z >>= \y -> 
+            pure (s y) >>=
+            return f y
+
+ex2' z s f = do
+    y <- z
+    s y
+    return (f y)
 -- lecture exercises
+-- exercise 1
+fourfirst :: [a] -> [(Int, a)]
+fourfirst xs = do
+    x <- xs
+    return (4, x)
+
+-- the code returns a list of tuples where the first element of the tuple is the integer 4, and the second element is the element at the same index in the original list.Add
+
+-- exercise 2
+data W x = Bingo x deriving Show
+instance Functor W where
+    fmap f (Bingo x) = Bingo (f x)
+
+instance Applicative W where
+    pure = Bingo
+    Bingo x <*> Bingo y = Bingo (x y)
+
+instance Monad W where
+    return x = Bingo x
+    Bingo x >>= f = f x
+
+wrapadd :: Num b => b -> W b -> W b
+wrapadd nm m = do
+    x <- m
+    return (x+nm)
+
+h :: Num b => W b -> W b -> W b
+h a b = do
+    x <- a
+    y <- b
+    return (x*y)
+
+-- exercise 3
+data MTree a = MLeaf a | MNode (MTree a) (MTree a) deriving Show
+
+instance Functor MTree where
+    fmap g (MLeaf a) = MLeaf (g a)
+    fmap g (MNode a b) = MNode (fmap g a) (fmap g b)
+
+instance Applicative MTree where
+    pure = MLeaf
+    MLeaf a <*> MLeaf b = MLeaf (a b)
+    MLeaf a <*> MNode b c = MNode (MLeaf a <*> b) (MLeaf a <*> c)
+    MNode a b <*> c = MNode (a <*> c) (a <*> c)
+
+instance Monad MTree where
+    return = pure
+    MLeaf a >>= f = f a
+    MNode a b >>= f = MNode (a >>= f) (b >>= f)
+
+
+--minorder :: MTree a -> Maybe a
+mTreeAdd tree1 tree2 = do
+    leaf1 <- tree1
+    leaf2 <- tree2
+    return (leaf1 + leaf2)
+
+minorder :: MTree a -> Maybe a
+minorder (MLeaf a) = Just a
+
+dingo' x = do
+    putStrLn (show x)
+    return x
+
+-- exercise a
+foldM :: Monad m => (t1 -> t2 -> m t2) -> [t1] -> t2 -> m t2
+foldM f xs start = do 
+    result <- f (head xs) start 
+    if length xs == 1 then
+        return result
+    else
+        foldM f (tail xs) result
+
+main = foldM (\x y -> (dingo' (x+y))) [1,2,3,4] 0
