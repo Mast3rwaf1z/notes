@@ -115,12 +115,9 @@
 %-------------------------------------------------------------------
 
 \begin{frame}{Multicast/Group Communication}
-    \begin{itemize}
-        \item IP Multicast
-    \end{itemize}
 
     \begin{figure}
-        \includegraphics[width=.7\textwidth]{figures/2-multicast-group.png}
+        \includegraphics[width=1\textwidth]{figures/2-multicast-group.png}
     \end{figure}
 \end{frame}
 
@@ -135,17 +132,93 @@
     Out of order delivery, this can happen due to changes in routing. Consider a network with a slow and a fast intermediary node as two independant routes, if the sender sends a message through the slow node to the reciver followed by a message through the fast node, then the receiver might receive the second message before the first.
 \end{frame}
 
+\begin{frame}{IP Reliable Multicast}
+    \begin{itemize}
+        \item Trading efficiency for reliability
+        \item ACKs - increases time complexity to $O(n^2)$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{FIFO! First In - First Out Multicast}
+    Respects sequence numbers
+
+\end{frame}
+
+\begin{frame}{Total Ordering}
+    Two requirements must be met:
+    \begin{itemize}
+        \item Messages should arrive in the same order as they were sent
+        \item 
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Using a Sequencer}
     \begin{figure}
         \includegraphics[width=\textwidth]{figures/2-sequencer.png}
     \end{figure}
 \end{frame}
 
+\begin{frame}{Causal Ordering}
+    generally, causal ordering means that the events in a network does not depend on a future event, this is usually realized using lamport clocks.
+
+
+\end{frame}
+
+\begin{frame}{Clocks for ordering}
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{figures/2-lamport.png}
+    \end{figure}
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{figures/2-vector.png}
+    \end{figure}
+\end{frame}
+
+
+
 %-------------------------------------------------------------------
 %                     Consensus Protocols
 %-------------------------------------------------------------------
 
 \begin{frame}{Consensus Protocols}
+    The idea is to make sure processes agree\\
+    Synchronous Consensus Algorithm\\
+    Byzantine Generals Algorithm\\
+    Phase-King Algorithm
+\end{frame}
+
+
+\begin{frame}{Byzantine faults}
+    The armies example, one half retreats, one attacks.\\
+    Two different descisions was made, this is an error\\
+    Byzantine failures are by extension when the whole system fails due to a byzantine fault.
+\end{frame}
+
+\begin{frame}{Correct Processes}
+    A correct process is a process that is operating as expected. Closely tied with byzantine faults, if a process has a byzantine fault, then it is no longer a correct process.
+\end{frame}
+
+\begin{frame}{Synchronous Consensus Algorithm}
+    f-resilience, f processes may fail
+    \begin{itemize}
+        \item initially multicast your value
+        \item do f+1 rounds
+        \item in each round, process received messages, record how many times each unique value is received
+        \item multicast again
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Byzantine Generals}
+    > you have commanders and lieutenants, its kinda like master and slaves in other systems, the commander says a value, and the lieutenants take this value as the correct value.\\
+    > In this system, if the commander is not correct, it results in a failure.\\
+    > when the value is received from the commander, the lieutenants multicast their received value and id, then the majority value is chosen at each process.
+\end{frame}
+
+\begin{frame}{Phase-King algorithm}
+    > generals only work for f = 1, and can be optimized\\
+    f+1 phases\\
+    > in each phase, all processes start by transmitting their value, if the most frequest received value is from more than half of the processes, use that value\\
+    > the king is elected, process with id k is elected at phase k\\
+    > the purpose of the king is to send a tie breaker if two processes share the same count of values.
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -153,6 +226,38 @@
 %-------------------------------------------------------------------
 
 \begin{frame}{Replication and Consistency}
+    Goal of replication:\\
+    > To tolerate failures\\
+    > High availability\\
+    > More affordable to scale out\\
+    > caching is replication
+\end{frame}
+
+\begin{frame}{Replication}
+    \begin{minipage}{.45\textwidth}
+        \begin{figure}
+            \includegraphics[width=\textwidth]{figures/4-replication.drawio.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        > each server has videos cached\\
+        > if server 3 goes down, the EU user can use server 2
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Passive Replication}
+    > One primary node, all other nodes are backup
+\end{frame}
+
+\begin{frame}{Consistency}
+    Youtube: like count is consistent while views are relaxed consistency
+
+    What if user A and user B of a bank system adds money at the same time? all nodes has to agree on one value
+
+\end{frame}
+
+\begin{frame}{Sequential consistency}
+    Follow causality, 
 \end{frame}
 
 %-------------------------------------------------------------------
