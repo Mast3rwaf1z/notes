@@ -13,6 +13,20 @@
 \usepackage{mathpazo}
 \usepackage{eulervm}
 
+\usepackage{xcolor}
+
+\pagenumbering{arabic}
+
+\newcommand{\mainframe}[1]{\color{blue} \includegraphics[width=.05\textwidth]{figures/aau.png} #1\\\hrule}
+
+\newcommand{\regularframe}[1]{\color{black}\includegraphics[width=.05\textwidth]{figures/aau.png} #1\\\hrule}
+
+\addtobeamertemplate{navigation symbols}{}{
+    \usebeamerfont{footline}
+    \usebeamercolor[fg]{footline}
+    \hspace{1em}
+    \insertframenumber/\inserttotalframenumber
+}
 
 % title slide definition
 \title[DS]{Distributed Systems}
@@ -35,13 +49,13 @@
 %                 Distributed Mutual Exclusion
 %-------------------------------------------------------------------
 
-\begin{frame}{Distributed Mutual Exclusion}
+\begin{frame}{\mainframe{Distributed Mutual Exclusion}}
     What is a mutex? Kinda a Lock for distributed systems \ldots
 
     In a distributed system a mutex is for locking a shared resource in a network, traditionally in a program, a lock would be enough to handle concurrent writes/reads, but when the communication is expensive, locking the resource is harder to do.
 \end{frame}
 
-\begin{frame}{Mutex Algorithms}
+\begin{frame}{\regularframe{Mutex Algorithms}}
     \section{Mutex algorithms}
     \begin{itemize}
         \item Centralized Algorithm
@@ -51,7 +65,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Centralized algortihm}
+\begin{frame}{\regularframe{Centralized algortihm}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
             \includegraphics[width=\textwidth]{figures/1-mutex.png}
@@ -62,7 +76,7 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Token Ring Algorithm}
+\begin{frame}{\regularframe{Token Ring Algorithm}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
             \includegraphics[width=\textwidth]{figures/1-token.png}
@@ -73,7 +87,7 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Ricart and Agrawala's algorithm}
+\begin{frame}{\regularframe{Ricart and Agrawala's algorithm}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
             \includegraphics[width=\textwidth]{figures/1-ricart-agrawala.png}
@@ -84,7 +98,7 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Maekawas algorithm}
+\begin{frame}{\regularframe{Maekawas algorithm}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
             \includegraphics[width=\textwidth]{figures/1-maekawa.png}
@@ -95,7 +109,7 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Performance}
+\begin{frame}{\regularframe{Performance}}
     Bandwidth means Entry and Exit potential. This means how many times an acces can happen per messages.\\
     Token ring is infinite because the node itself chooses when to send the token.\\
     Ricart and Agrawala's algorithm has a bandwidth of 1+n-1 if it can do multicast in hardware, otherwise its n-1+n-1, as it will now have to unicast to everyone.
@@ -114,25 +128,25 @@
 %                 Multicast/Group Communication
 %-------------------------------------------------------------------
 
-\begin{frame}{Multicast/Group Communication}
+\begin{frame}{\mainframe{Multicast/Group Communication}}
 
     \begin{figure}
         \includegraphics[width=1\textwidth]{figures/2-multicast-group.png}
     \end{figure}
 \end{frame}
 
-\begin{frame}{IP Multicast - Hardware Support}
+\begin{frame}{\regularframe{IP Multicast - Hardware Support}}
     Uses a protocol called IGMP
 
     If there's hardware support, the sender transmits one message and the intermediary devices will determine how many devices it will transmit the message to.\\
     If there is not hardware support, then the sender will have to unicast many messages at once to its receivers instead.
 \end{frame}
 
-\begin{frame}{IP Multicast - Problems}
+\begin{frame}{\regularframe{IP Multicast - Problems}}
     Out of order delivery, this can happen due to changes in routing. Consider a network with a slow and a fast intermediary node as two independant routes, if the sender sends a message through the slow node to the reciver followed by a message through the fast node, then the receiver might receive the second message before the first.
 \end{frame}
 
-\begin{frame}{IP Reliable Multicast}
+\begin{frame}{\regularframe{IP Reliable Multicast}}
     \begin{itemize}
         \item Trading efficiency for reliability
         \item ACKs - increases time complexity to $O(n^2)$
@@ -144,7 +158,7 @@
 
 \end{frame}
 
-\begin{frame}{Total Ordering}
+\begin{frame}{\regularframe{Total Ordering}}
     Two requirements must be met:
     \begin{itemize}
         \item Messages should arrive in the same order as they were sent
@@ -152,19 +166,19 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Using a Sequencer}
+\begin{frame}{\regularframe{Using a Sequencer}}
     \begin{figure}
         \includegraphics[width=\textwidth]{figures/2-sequencer.png}
     \end{figure}
 \end{frame}
 
-\begin{frame}{Causal Ordering}
+\begin{frame}{\regularframe{Causal Ordering}}
     generally, causal ordering means that the events in a network does not depend on a future event, this is usually realized using lamport clocks.
 
 
 \end{frame}
 
-\begin{frame}{Clocks for ordering}
+\begin{frame}{\regularframe{Clocks for ordering}}
     \begin{figure}
         \includegraphics[width=.5\textwidth]{figures/2-lamport.png}
     \end{figure}
@@ -179,7 +193,7 @@
 %                     Consensus Protocols
 %-------------------------------------------------------------------
 
-\begin{frame}{Consensus Protocols}
+\begin{frame}{\mainframe{Consensus Protocols}}
     The idea is to make sure processes agree\\
     Synchronous Consensus Algorithm\\
     Byzantine Generals Algorithm\\
@@ -187,17 +201,17 @@
 \end{frame}
 
 
-\begin{frame}{Byzantine faults}
+\begin{frame}{\regularframe{Byzantine faults}}
     The armies example, one half retreats, one attacks.\\
     Two different descisions was made, this is an error\\
     Byzantine failures are by extension when the whole system fails due to a byzantine fault.
 \end{frame}
 
-\begin{frame}{Correct Processes}
+\begin{frame}{\regularframe{Correct Processes}}
     A correct process is a process that is operating as expected. Closely tied with byzantine faults, if a process has a byzantine fault, then it is no longer a correct process.
 \end{frame}
 
-\begin{frame}{Synchronous Consensus Algorithm}
+\begin{frame}{\regularframe{Synchronous Consensus Algorithm}}
     f-resilience, f processes may fail
     \begin{itemize}
         \item initially multicast your value
@@ -207,13 +221,13 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Byzantine Generals}
+\begin{frame}{\regularframe{Byzantine Generals}}
     > you have commanders and lieutenants, its kinda like master and slaves in other systems, the commander says a value, and the lieutenants take this value as the correct value.\\
     > In this system, if the commander is not correct, it results in a failure.\\
     > when the value is received from the commander, the lieutenants multicast their received value and id, then the majority value is chosen at each process.
 \end{frame}
 
-\begin{frame}{Phase-King algorithm}
+\begin{frame}{\regularframe{Phase-King algorithm}}
     > generals only work for f = 1, and can be optimized\\
     f+1 phases\\
     > in each phase, all processes start by transmitting their value, if the most frequest received value is from more than half of the processes, use that value\\
@@ -225,7 +239,7 @@
 %                 Replication and Consistency
 %-------------------------------------------------------------------
 
-\begin{frame}{Replication and Consistency}
+\begin{frame}{\mainframe{Replication and Consistency}}
     Goal of replication:\\
     > To tolerate failures\\
     > High availability\\
@@ -233,7 +247,7 @@
     > caching is replication
 \end{frame}
 
-\begin{frame}{Replication}
+\begin{frame}{\regularframe{Replication}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
             \includegraphics[width=\textwidth]{figures/4-replication.drawio.png}
@@ -245,18 +259,18 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Passive Replication}
+\begin{frame}{\regularframe{Passive Replication}}
     > One primary node, all other nodes are backup
 \end{frame}
 
-\begin{frame}{Consistency}
+\begin{frame}{\regularframe{Consistency}}
     Youtube: like count is consistent while views are relaxed consistency
 
     What if user A and user B of a bank system adds money at the same time? all nodes has to agree on one value
 
 \end{frame}
 
-\begin{frame}{Sequential consistency}
+\begin{frame}{\regularframe{Sequential consistency}}
     Follow causality, 
 \end{frame}
 
@@ -264,35 +278,155 @@
 %                     Distributed Storage
 %-------------------------------------------------------------------
 
-\begin{frame}{Distributed Storage}
+\begin{frame}{\mainframe{Distributed Storage}}
 \end{frame}
 
 %-------------------------------------------------------------------
 %                     Big Data Analytics
 %-------------------------------------------------------------------
 
-\begin{frame}{Big Data Analytics}
+\begin{frame}{\mainframe{Big Data Analytics}}
+    Why? Lots of unstructured data could be processed\\
+    Not suited for traditional databases\\
+\end{frame}
+
+\begin{frame}{\regularframe{Map Reduce}}
+    It is a method to take large chunks of data, split them and process them in parallel on distributed nodes, and finally aggregating them.\\
+    Functional programming style data processing:\\
+    Map: maps a key to generate some value\\
+    Reduce: any equivalent key is reduced together with similar keys to single values.\\
+\end{frame}
+
+\begin{frame}{\regularframe{Map Reduce}}
+    \begin{figure}
+        \includegraphics[width=.6\textwidth]{figures/mapreduce.drawio.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\regularframe{Fault Tolerance}}
+    workers are pinged by master node (first in previous diagram)\\
+    master is a single point of failure
+\end{frame}
+
+\begin{frame}{\regularframe{Spark (RDD)}}
 \end{frame}
 
 %-------------------------------------------------------------------
 %                         Blockchains
 %-------------------------------------------------------------------
 
-\begin{frame}{Blockchains}
+\begin{frame}{\mainframe{Blockchains}}
+    Blockchains are Peer-To-Peer Networks
+    Hashing\\
+    > Compare a hash representing data instead of comparing data\\
+    > Make hashes for portions of data if its too large
+\end{frame}
+
+\begin{frame}{\regularframe{The Three Algorithms}}
+    generateKeys\\
+    > Generate private and public keys\\
+    sign\\
+    > Compute a hash based on the secret key\\
+    verify\\
+    > Check if the message and hash matches based on the public key\\
+    Example: passwordless ssh
+\end{frame}
+
+\begin{frame}{\regularframe{The Blockchain}}
+    \begin{figure}
+        \includegraphics[width=\textwidth]{figures/blockchain.drawio.png}
+    \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------
 %                  Peer-to-Peer Networking
 %-------------------------------------------------------------------
 
-\begin{frame}{Peer-to-Peer Networking}
+\begin{frame}{\mainframe{Peer-to-Peer Networking}}
+    Overlay networks and underlying network\\
+    Three types of peer-to-peer networks\\
+    > Unstructured\\
+    > Structured\\
+    > Centralized
+\end{frame}
+
+\begin{frame}{\regularframe{Overlay Networks}}
+    This network is like an abstraction of the underlying architecture.\\
+    Green: overlay, Yellow underlying network
+    \begin{figure}
+        \includegraphics[width=.55\textwidth]{figures/overlay-networks.drawio.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\regularframe{Unstructured P2P Networks}}
+    No central server\\
+    No structure in the overlay network\\
+    Devices come and go from the network very frequently\\
+    very slow search due to flooding
+\end{frame}
+
+\begin{frame}{\regularframe{Structured P2P Networks}}
+    Can be structured according to rings.\\
+    in a ring, a node would maintain pointers to the next node and previous node\\
+    if a node wants to join, it'll first contact an arbitrary node, that will contact around the ring until the previous node can tell the new node who its next is, connection between the new and next node is established and finally the new node can join.
+\end{frame}
+
+\begin{frame}{\regularframe{Centralized P2P Networks}}
+    Structured around a centralized server\\
+    Centralized server has no data, it will just return the physically closest other client that has the data
+\end{frame}
+
+\begin{frame}{\regularframe{Advantages/Disadvantages}}
+    Advantages\\
+    > Inherently scalable\\
+    > Inherently Fault Tolerant\\
+    Disadvantages\\
+    > Security\\
+    > Backups are hard
 \end{frame}
 
 %-------------------------------------------------------------------
 %              Internet of Things and Routing
 %-------------------------------------------------------------------
 
-\begin{frame}{Internet of Things and Routing}
+\begin{frame}{\mainframe{Internet of Things and Routing}}
+    Terminology:\\
+    > Embedded Systems, WSN, CPS, IoT\\
+    Low power, Real time, etc...\\
+\end{frame}
+
+\begin{frame}{\regularframe{Wireless Sensor Networks}}
+    monitoring\\
+
+    Example: P7 Project\\
+    First draft project: Deep Sleep and energy saving\\
+    \begin{figure}
+        \includegraphics[width=.8\textwidth]{figures/esp32.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\regularframe{Typical Protocols in WSN/IoT}}
+    WiFi WLAN\\
+    Bluetooth PAN\\
+    Others? ZigBee, LoRA, CSMA, ...\\
+    Example: P1 LoRA wireless sensors\\
+    \begin{figure}
+        \includegraphics[width=.6\textwidth]{figures/system_oversigt.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\regularframe{CSMA}}
+    MAC Layer protocol\\
+    You can compare this protocol with TDMA (Time Division Multiple Access) where the channel is split into time slots for each user, while CSMA listens for concurrent transmissions before transmitting.\\
+    > Many devices waiting on a channel to be ready is prone to collisions\\
+    > Collision Avoidance % find shit from NDS
+\end{frame}
+
+\begin{frame}{\regularframe{Route Discovery DSR}}
+    Flooding\\
+    \begin{figure}
+        \includegraphics[width=.9\textwidth]{figures/route-discovery.png}
+    \end{figure}
 \end{frame}
 
 \end{document}
