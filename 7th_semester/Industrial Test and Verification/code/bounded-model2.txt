@@ -1,0 +1,9 @@
+{n >= 0}
+x := 1
+y := 1
+if i <= n {
+    f := f * i
+    i := i + 1
+} else
+    skip
+{i > n -> f = fact(n)}
