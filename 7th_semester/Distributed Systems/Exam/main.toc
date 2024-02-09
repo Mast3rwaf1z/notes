@@ -1,0 +1,2 @@
+\babel@toc {USenglish}{}\relax 
+\beamer@sectionintoc {1}{Mutex algorithms}{2}{0}{1}
