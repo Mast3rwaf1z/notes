@@ -17,7 +17,7 @@
 
 \pagenumbering{arabic}
 
-\newcommand{\mainframe}[1]{\color{blue} \includegraphics[width=.05\textwidth]{figures/aau.png} #1\\\hrule}
+\newcommand{\mainframe}[1]{\color{blue} \includegraphics[width=.05\textwidth]{figures/aau.png} #1\\\color{black}\hrule}
 
 \newcommand{\regularframe}[1]{\color{black}\includegraphics[width=.05\textwidth]{figures/aau.png} #1\\\hrule}
 
@@ -55,6 +55,8 @@
     In a distributed system a mutex is for locking a shared resource in a network, traditionally in a program, a lock would be enough to handle concurrent writes/reads, but when the communication is expensive, locking the resource is harder to do.
 \end{frame}
 
+% A mutual exclusion means that a shared resource between processes should be coordinated between processes in some way. For this there are multiple algorithms that can ensure a network can reach mutual exclusion. They have their advantages and disadvantages that i will discuss in this presentation
+
 \begin{frame}{\regularframe{Mutex Algorithms}}
     \section{Mutex algorithms}
     \begin{itemize}
@@ -64,6 +66,9 @@
         \item Maekawas algorithm
     \end{itemize}
 \end{frame}
+
+% The centralized algorithm is an algorithm where a centralized server will handle whether a process can access the critical resource in a network.
+% This is a very simple architecture, and its implementation is simple, but it also has a huge flaw that any failures at the centralized server will result in a full system failure. This is bad.
 
 \begin{frame}{\regularframe{Centralized algortihm}}
     \begin{minipage}{.45\textwidth}
@@ -76,6 +81,9 @@
     \end{minipage}
 \end{frame}
 
+% This is the token ring algorithm, the idea here is to remove the centralized server from the system, essentially making the system completely decentralized. Here the devices are communicating a token to each other which signifies that that process is allowed to access the critical section. One of the big advantages of this algorithm is how much each node can communicate with the critical section. once it has the token, it can communicate all it wants with the critical section until it transmits the token to the next device.
+% The disadvantage of such a system is that if one node fails the whole system fails.
+
 \begin{frame}{\regularframe{Token Ring Algorithm}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
@@ -86,6 +94,10 @@
         \tiny{All nodes are points of failure at any given time.}
     \end{minipage}
 \end{frame}
+
+% The ricart and agrawala's algorithm is one where each of the nodes keeps track of whether a node is in the critical section at any time.
+% This is useful as if multicast is efficient, then access is granted swiftly while any node wishing to enter doesn't have to communicate, it would know if anyone is accessing the critical section
+% Once again the disadvantage is that one node failing means the whole system fails
 
 \begin{frame}{\regularframe{Ricart and Agrawala's algorithm}}
     \begin{minipage}{.45\textwidth}
@@ -98,6 +110,9 @@
     \end{minipage}
 \end{frame}
 
+% This algorithm is similar to ricart and agrawala, but instead of asking each node in the network, it only has to ask a small subset of the network.
+% This can be 
+
 \begin{frame}{\regularframe{Maekawas algorithm}}
     \begin{minipage}{.45\textwidth}
         \begin{figure}
@@ -106,7 +121,19 @@
     \end{minipage}
     \begin{minipage}{.5\textwidth}
         \tiny{Very similar to Ricart and Agrawala, but only nodes in the subset failing will result in a particular node to fail. If you're a bit smart about choosing the subsets this can be minimized.}
+    
+        \begin{table}
+            \begin{tabular}{|c|c|c|c|c|}\hline
+                n & n & n & n & n \\\hline
+                n & $p_1$ & n & n & n \\\hline
+                n & n & n & n & n \\\hline
+                n & n & n & $p_2(f)$ & n \\\hline
+                n & n & n & n & n \\\hline
+            \end{tabular}
+        \end{table}
+    
     \end{minipage}
+
 \end{frame}
 
 \begin{frame}{\regularframe{Performance}}
@@ -153,27 +180,24 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{FIFO! First In - First Out Multicast}
-    Respects sequence numbers
+\begin{frame}{\regularframe{FIFO! First In - First Out Multicast}}
+    Respects sequence numbers\\
+    IP Multicast is FIFO
 
 \end{frame}
 
-\begin{frame}{\regularframe{Total Ordering}}
-    Two requirements must be met:
-    \begin{itemize}
-        \item Messages should arrive in the same order as they were sent
-        \item 
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{\regularframe{Using a Sequencer}}
+\begin{frame}{\regularframe{Total Ordering: Using a Sequencer}}
+    Messages should arrive in the same order as they were sent\\
+    A central server handles giving each message a sequence number.\\
+    Single point of failure
     \begin{figure}
-        \includegraphics[width=\textwidth]{figures/2-sequencer.png}
+        \includegraphics[width=.3\textwidth]{figures/sequencer.drawio.png}
     \end{figure}
 \end{frame}
 
 \begin{frame}{\regularframe{Causal Ordering}}
-    generally, causal ordering means that the events in a network does not depend on a future event, this is usually realized using lamport clocks.
+    Generally, causal ordering means that the events in a network does not depend on a future event, this is usually realized using lamport clocks.\\
+    A lamport clock is simply a clock that increments before each event on a node, and is synchronized at the receiver.
 
 
 \end{frame}
@@ -228,11 +252,20 @@
 \end{frame}
 
 \begin{frame}{\regularframe{Phase-King algorithm}}
+    This algorithm can be seen easier in my implementation\\
     > generals only work for f = 1, and can be optimized\\
     f+1 phases\\
     > in each phase, all processes start by transmitting their value, if the most frequest received value is from more than half of the processes, use that value\\
     > the king is elected, process with id k is elected at phase k\\
     > the purpose of the king is to send a tie breaker if two processes share the same count of values.
+\end{frame}
+
+\begin{frame}{\regularframe{Paxos}}
+    PAXOS is a consensus protocol used in Chubby, in this algorithm 3 types of nodes are defined:\\
+    > Proposer\\
+    > Accepter\\
+    > Learner\\
+    Proposers say a value, accepters accept that value and agree on the majority amongst themselves. Learners takes proposed values.
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -271,7 +304,7 @@
 \end{frame}
 
 \begin{frame}{\regularframe{Sequential consistency}}
-    Follow causality, 
+    Follows lamport clocks, the system should follow the order in which the events arrive.
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -285,11 +318,27 @@
 \end{frame}
 
 \begin{frame}{\regularframe{Big Data Storage}}
-    Often one system can't handle the amount of data stored 
+    Often one system can't handle the amount of data stored \\
+    Google/facebooks large amounts of data
+\end{frame}
+
+\begin{frame}{\regularframe{Chubby}}
+    uses distributed consensus protocol PAXOS\\
+    Not designed for frequent locking and unlocking, some devices may hold a lock for days.\\
+    Clients elects a master node, the master node has the role of writing the database while also making sure that any replicas of it also writes the same data.
+\end{frame}
+\begin{frame}{\regularframe{Paxos}}
+    PAXOS is a consensus protocol used in Chubby, in this algorithm 3 types of nodes are defined:\\
+    > Proposer\\
+    > Accepter\\
+    > Learner\\
+    Proposers say a value, accepters accept that value and agree on the majority amongst themselves. Learners takes proposed values.
 \end{frame}
 
 \begin{frame}{\regularframe{GFS Filesystem}}
-    A filesystem designed to have direct access to files across a cluster of distributed storage nodes.
+    A filesystem designed to have direct access to files across a cluster of distributed storage nodes.\\
+    One master node to manage the systems.\\
+    Master node prevents single point of failure by maintaining extra nodes for replication.
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -320,6 +369,9 @@
 \end{frame}
 
 \begin{frame}{\regularframe{Spark (RDD)}}
+    Another way to process big data\\
+    Data is ordered in \texttt{Resilient Distributed Database}s. an immutable data structure that can be operated on in parallel.\\
+
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -344,9 +396,23 @@
 \end{frame}
 
 \begin{frame}{\regularframe{The Blockchain}}
-    each block is identified by a hash
+    each block is identified by a hash\\
+    A tamper proof linked list, $HP_2$ depends on $HP_1$\\
+    Essentially a decentralized database\\
+    A hash pointer is like a tuple of the address for the next block and a hash of the current block
     \begin{figure}
         \includegraphics[width=\textwidth]{figures/blockchain.drawio.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\regularframe{Example: Bitcoin/Crypto}}
+    ownership of a block of data, a coin is determined by the owner signing a block against their private keys\\
+    NFT's are also data on a blockchain, so ownership of these are signed in a similar way.
+\end{frame}
+
+\begin{frame}{\regularframe{Merkle Trees}}
+    \begin{figure}
+        \includegraphics[width=\textwidth]{figures/merkle.drawio.png}
     \end{figure}
 \end{frame}
 
