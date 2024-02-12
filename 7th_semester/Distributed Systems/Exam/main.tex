@@ -50,9 +50,9 @@
 %-------------------------------------------------------------------
 
 \begin{frame}{\mainframe{Distributed Mutual Exclusion}}
-    What is a mutex? Kinda a Lock for distributed systems \ldots
+    > What is a mutex? Kinda a Lock for distributed systems \ldots
 
-    In a distributed system a mutex is for locking a shared resource in a network, traditionally in a program, a lock would be enough to handle concurrent writes/reads, but when the communication is expensive, locking the resource is harder to do.
+    > In a distributed system a mutex is for locking a shared resource in a network, traditionally in a program, a lock would be enough to handle concurrent writes/reads, but when the communication is expensive, locking the resource is harder to do.
 \end{frame}
 
 % A mutual exclusion means that a shared resource between processes should be coordinated between processes in some way. For this there are multiple algorithms that can ensure a network can reach mutual exclusion. They have their advantages and disadvantages that i will discuss in this presentation
@@ -158,7 +158,7 @@
 \begin{frame}{\mainframe{Multicast/Group Communication}}
 
     \begin{figure}
-        \includegraphics[width=1\textwidth]{figures/2-multicast-group.png}
+        \includegraphics[height=.4\textwidth]{figures/multicast-general.drawio.png}
     \end{figure}
 \end{frame}
 
@@ -231,18 +231,31 @@
     Byzantine failures are by extension when the whole system fails due to a byzantine fault.
 \end{frame}
 
-\begin{frame}{\regularframe{Correct Processes}}
-    A correct process is a process that is operating as expected. Closely tied with byzantine faults, if a process has a byzantine fault, then it is no longer a correct process.
-\end{frame}
+
 
 \begin{frame}{\regularframe{Synchronous Consensus Algorithm}}
-    f-resilience, f processes may fail
-    \begin{itemize}
-        \item initially multicast your value
-        \item do f+1 rounds
-        \item in each round, process received messages, record how many times each unique value is received
-        \item multicast again
-    \end{itemize}
+    \begin{minipage}{.45\textwidth}
+    > f-resilience, f processes may fail\\
+    initial multicast\\
+    > multicast every received v that doesn't equal v'
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \begin{figure}
+            \includegraphics[width=\textwidth]{figures/sync_consensus.png}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{\regularframe{Sync algorithm: proof}}
+    \begin{minipage}{.45\textwidth}
+        \begin{figure}
+            \includegraphics[height=\textwidth]{figures/consensus_proof.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        last multicast was to send every value that does not match the node's original value\\
+        $\{x \in v; x \notin v'\}$
+    \end{minipage}
 \end{frame}
 
 \begin{frame}{\regularframe{Byzantine Generals}}
@@ -266,6 +279,13 @@
     > Accepter\\
     > Learner\\
     Proposers say a value, accepters accept that value and agree on the majority amongst themselves. Learners takes proposed values.
+\end{frame}
+
+\begin{frame}{\regularframe{Paxos: examples}}
+    \includegraphics[width=\textwidth]{figures/paxos1.png}
+    \vspace{30pt}
+
+    \includegraphics[width=\textwidth]{figures/paxos2.png}
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -335,6 +355,13 @@
     Proposers say a value, accepters accept that value and agree on the majority amongst themselves. Learners takes proposed values.
 \end{frame}
 
+\begin{frame}{\regularframe{Paxos: examples}}
+    \includegraphics[width=\textwidth]{figures/paxos1.png}
+    \vspace{30pt}
+
+    \includegraphics[width=\textwidth]{figures/paxos2.png}
+\end{frame}
+
 \begin{frame}{\regularframe{GFS Filesystem}}
     A filesystem designed to have direct access to files across a cluster of distributed storage nodes.\\
     One master node to manage the systems.\\
@@ -348,6 +375,7 @@
 \begin{frame}{\mainframe{Big Data Analytics}}
     Why? Lots of unstructured data could be processed\\
     Not suited for traditional databases\\
+    What is big data?
 \end{frame}
 
 \begin{frame}{\regularframe{Map Reduce}}
