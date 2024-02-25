@@ -1,0 +1,1 @@
+/nix/store/90h6k8ylkgn81k10190v5c9ldyjpzgl9-gcc-wrapper-12.3.0/bin/g++ CMakeFiles/polygon_test.dir/polygon_test.cpp.o CMakeFiles/polygon_test.dir/polygon.cpp.o -o polygon_test 
