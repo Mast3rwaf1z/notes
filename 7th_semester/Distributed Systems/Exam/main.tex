@@ -264,6 +264,10 @@
     > when the value is received from the commander, the lieutenants multicast their received value and id, then the majority value is chosen at each process.
 \end{frame}
 
+\begin{frame}{\regularframe{Byzantine Generals pseudocode}}
+    \includegraphics[width=.8\textwidth]{figures/byzantine-generals.png}
+\end{frame}
+
 \begin{frame}{\regularframe{Phase-King algorithm}}
     This algorithm can be seen easier in my implementation\\
     > generals only work for f = 1, and can be optimized\\
@@ -271,6 +275,10 @@
     > in each phase, all processes start by transmitting their value, if the most frequest received value is from more than half of the processes, use that value\\
     > the king is elected, process with id k is elected at phase k\\
     > the purpose of the king is to send a tie breaker if two processes share the same count of values.
+\end{frame}
+
+\begin{frame}{\regularframe{PHase-King Pseudocode}}
+    \includegraphics[width=.7\textwidth]{figures/phase-king.png}
 \end{frame}
 
 \begin{frame}{\regularframe{Paxos}}
@@ -368,6 +376,12 @@
     Master node prevents single point of failure by maintaining extra nodes for replication.
 \end{frame}
 
+\begin{frame}{\regularframe{BigTable}}
+    A combination of the previous technologies\\
+    > It is a data storage system which functions like a three-dimensional map\\
+    > It is distributed, and uses GFS and Chubby to manage distributed storage nodes.
+\end{frame}
+
 %-------------------------------------------------------------------
 %                     Big Data Analytics
 %-------------------------------------------------------------------
@@ -400,6 +414,10 @@
     Another way to process big data\\
     Data is ordered in \texttt{Resilient Distributed Database}s. an immutable data structure that can be operated on in parallel.\\
 
+\end{frame}
+
+\begin{frame}{\regularframe{RDD}}
+    Datasets stored in memory, parallelizable.
 \end{frame}
 
 %-------------------------------------------------------------------
@@ -528,11 +546,25 @@
     > Collision Avoidance % find shit from NDS
 \end{frame}
 
+\begin{frame}{\regularframe{Routing}}
+    What is routing?
+\end{frame}
+
 \begin{frame}{\regularframe{Route Discovery DSR}}
     Flooding\\
     \begin{figure}
         \includegraphics[width=.9\textwidth]{figures/route-discovery.png}
     \end{figure}
+\end{frame}
+
+\begin{frame}{\regularframe{Tree routing}}
+    \begin{minipage}{.45\textwidth}
+        \includegraphics[width=\textwidth]{figures/tree-routing.png}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        CSkip: children addresses\\
+        Highlighted area: 32-61
+    \end{minipage}
 \end{frame}
 
 \end{document}
