@@ -1,0 +1,5 @@
+|ex43
+inc => ~NO_FANOUT~
+dec => ~NO_FANOUT~
+
+

@@ -1,0 +1,28 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ex6 is
+	port(
+		sw0 : in std_logic;
+		sw1 : in std_logic;
+		sw2 : in std_logic;
+		sw3 : in std_logic;
+		sw4 : in std_logic;
+		sw5 : in std_logic;
+		sw6 : in std_logic;
+		sw7 : in std_logic;
+		led0 : in std_logic;
+		led1 : in std_logic;
+		led2 : in std_logic;
+		led3 : in std_logic;
+		led4 : in std_logic;
+		led5 : in std_logic;
+		led6 : in std_logic;
+		led7 : in std_logic;
+		led8 : in std_logic;
+	);
+end ex6;
+
+architecture behavioral of ex6 is
+
+end behavioral;
