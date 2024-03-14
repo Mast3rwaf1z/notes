@@ -1,0 +1,45 @@
+Abstract:
+    should describe the project, NOT THE PAPER
+
+Introduction:
+    1 - 2 pages MAX
+    have an image on the first page, says a lot more words than the same in text
+    structure the introduction chronologically, assess the big picture, introduce the problem, mention what we did, then results and what we're contributing to the world
+    Contributing SHOULD NOT be more research topics, at least if it is then make it sound different!
+
+Related work:
+    should take the sources and somehow group prior work into themes, in a longer (10 page) paper, these themes could be subsections
+
+Design:
+    Should assess the goals of our product, how it should work, the process we went through designing it (NOT IMPLEMENTATION SPECIFICS) 
+    Figures tables and diagrams should be placed inline as they are introduced in the text, this gives a better flow in reading
+    Implementation details at the end in a subsection if it has to be there, papers are better without this section though. Should not be a simple write-up, but focus on innovation and realisation of ideas.
+    
+Method:
+    Since our project is more of an engineering oriented paper, we shouldn't assess the validity, but rather analyse our product in this section.
+    We would probably still use a Quantitative laboratory experiments outline for our project, we'd like the most controlled environment for testing
+
+Results:
+    Most important part of this section is that it doesn't assess the correctness, quality, or conclusion based on the data, its just a detail description of how the results were gathered.
+    Tell a story with the data
+    
+Discussion:
+    An extension of the results section, this section should show how good the results are, why they're bad, why we were too late, why this thing that we did changed everything
+    Focus on what is interesting, no bloat
+    Be honest
+
+Future work:
+    what did we do that warrants more work? We should avoid making a list of small things to fix and instead focus on the big picture, what kind of project could fix the problems we had?
+    make it inspiring
+
+Conclusion:
+    Answer the claims we make in the introduction
+    summarize
+    do not re-report, can mention things, but re-reporting is done earlier
+    Write the conclusion such that a random guy from a press could read the paper and write a correct article about it
+    
+Acknowledgements:
+    small section thanking who's helped with the paper
+
+References:
+    same as report ish

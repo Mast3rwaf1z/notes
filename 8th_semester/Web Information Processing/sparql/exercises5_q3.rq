@@ -1,0 +1,10 @@
+PREFIX : <http://example.org/>
+
+SELECT ?prize
+FROM :G-JE
+FROM :G-FM
+FROM :G-SP
+WHERE {
+  ?prize :winner ?winner1 . ?winner1 :country :France .
+  ?prize :winner ?winner2 . ?winner2 :country :Spain .
+}

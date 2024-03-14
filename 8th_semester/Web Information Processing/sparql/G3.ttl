@@ -1,0 +1,33 @@
+@prefix ex: <http://example.org/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+dbr:Aalborg_University rdf:type ex:University ;
+                       ex:hasLocation dbr:Aalborg .
+					   
+dbr:Aalborg ex:population 211000 .
+
+dbr:Denmark ex:hasCity dbr:Aalborg ;
+            ex:population 5824857 ;
+            dbo:capital dbr:Copenhagen ;
+            rdf:type dbo:Country .
+			
+ex:MUC ex:hasLocation dbr:Copenhagen ;
+       rdf:type ex:HigherEducationInstitution .
+
+dbr:Sweden rdf:type dbo:Country ;
+           dbo:capital dbr:Stockholm ;
+           ex:hasCity dbr:Gothenburg, dbr:Uppsala ;
+           ex:population 10343403 .
+
+dbr:Gothenburg ex:population 599011 .
+
+dbr:Uppsala ex:population 211000 .
+
+dbr:University_of_Gothenbrug ex:hasLocation dbr:Gothenburg ;
+                             rdf:type ex:University .
+
+dbr:Uppsala_University ex:hasLocation dbr:Uppsala ;
+                       rdf:type ex:University .

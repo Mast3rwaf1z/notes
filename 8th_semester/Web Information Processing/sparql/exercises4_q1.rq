@@ -1,0 +1,6 @@
+PREFIX ex: <http://example.org/> 
+SELECT DISTINCT ?war 
+WHERE {
+  ?npl a ex:NobelPrizeLiterature ; ex:winner ?winner .
+  ?war ex:combatant ?winner 
+}

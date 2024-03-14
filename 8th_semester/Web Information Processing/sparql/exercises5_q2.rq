@@ -1,0 +1,13 @@
+PREFIX : <http://example.org/>
+
+SELECT DISTINCT ?pw WHERE {
+  { ?w :combatant ?pw } 
+  UNION 
+  { GRAPH ?g1 { ?w :combatant ?pw } } .
+  { ?p :winner ?pw } 
+  UNION 
+  { GRAPH ?g2 { ?p :winner ?pw } } .
+  { ?p a :NobelPrizeLiterature } 
+  UNION
+  { GRAPH ?g3 { ?p a :NobelPrizeLiterature } }
+}

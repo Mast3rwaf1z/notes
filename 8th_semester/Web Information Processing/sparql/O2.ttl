@@ -1,0 +1,14 @@
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:University rdfs:subClassOf ex:HigherEducationInstitution .
+ex:HigherEducationInstitution rdfs:subClassOf ex:EducationalInstitution .
+ex:EducationalInstitution rdfs:subClassOf ex:Institution .
+
+dbo:capital rdfs:subPropertyOf ex:hasCity ; rdfs:domain dbo:PopulatedPlace ; rdfs:range dbo:City .
+ex:hasCity rdfs:domain dbo:PopulatedPlace ; rdfs:range dbo:City .
+dbo:City rdfs:subClassOf dbo:PopulatedPlace .
+dbo:Country rdfs:subClassOf dbo:PopulatedPlace .
+ex:population rdfs:domain dbo:PopulatedPlace ; rdfs:range xsd:integer .

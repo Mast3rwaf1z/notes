@@ -1,0 +1,27 @@
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:OMCPH22 rdf:type ex:MusicalEvent ;
+        ex:genre ex:DoomMetal, ex:FolkMetal ;
+		ex:performer ex:OM ;
+		ex:date "2022-05-17"^^xsd:date ;
+		ex:venue ex:Kransalen .
+
+ex:HelmetCPH22 rdf:type ex:MusicalEvent ;
+        ex:genre ex:HeavyMetal ;
+		ex:performer ex:Helmet ;
+		ex:date "2022-04-16"^^xsd:date ;
+		ex:venue ex:Kransalen .		
+		
+ex:FaunCPH23 rdf:type ex:MusicalEvent ;
+		ex:performer ex:Faun ;
+		ex:date "2023-03-02"^^xsd:date ;
+		ex:venue ex:Kransalen .		
+
+ex:Kransalen ex:locatedIn ex:Pumpehuset .
+
+ex:Pumpehuset ex:locatedIn ex:Copenhagen .
+
+ex:Copenhagen rdf:type ex:City .

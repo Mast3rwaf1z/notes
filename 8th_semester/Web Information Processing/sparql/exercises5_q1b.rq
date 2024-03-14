@@ -1,0 +1,13 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?me1 (COUNT(?me2) AS ?num) WHERE {
+  ?me1 rdf:type ex:MusicalEvent ;
+       ex:date ?date1 .
+  OPTIONAL {
+    ?me2 rdf:type ex:MusicalEvent ;
+         ex:date ?date2
+    FILTER (?date2 < ?date1)  
+  }
+}
+GROUP BY ?me1

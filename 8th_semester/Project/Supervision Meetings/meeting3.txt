@@ -1,0 +1,40 @@
+in a paper you'd maybe not have a defined problem statement
+
+research question at the end of introduction?
+
+or a hypothesis?
+    maybe not the best option for us, we don't know the outcome of our system by the design.
+
+not neccessarily describe all the related works
+    consider like what we could say in 1 sentence about multiple sources, both to cook down the related work and to show that we've explored what's out there.
+    
+    kinda use the sources as citations instead of describing them in detail.
+
+about the "smart garment" wearable solution, we haven't considered it that much, so we could drop it
+    using an app, on a smartphone or a smart watch could be a better project
+    especially because we don't have any special reason to choose to go that way...
+
+journaling:
+    journal at a set time, rather than at random
+        mitigates any bias
+
+        make a questionaire for the user rather than a raw journal?
+
+        research if there's a scale of stress defined somewhere
+            ask quantifiable questions
+
+                how well did you sleep last night?
+                    could be a good indicator of episodic stress
+
+            how do we translate the scale to some intervention?
+
+        we should consider soon what kind of intervention we want to do
+            a message? advice?
+                base this on some litterature
+
+    if we go the journaling route, we should probably reconsider whether we want to use simulation.
+
+maybe consider the wearable part as a future work part.
+    consider something like advice first, then say we can redesign that form of intervention in future work
+
+ 

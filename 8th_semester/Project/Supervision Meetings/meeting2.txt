@@ -1,0 +1,22 @@
+
+what is interesting to look at:
+    how are we gonna measure it
+    how can we alert them before its too late
+    maybe you don't even need sensor data for episodic stress
+        calendar
+        journaling / diary
+            ask questions?
+            track mood?
+                a fuckton of machine learning solutions.... :sadge:
+                find some research on that
+
+        sensor data is also very hard to draw a stress related conclusion about
+    
+    ask the user daily questions and analyze this
+
+
+analysis points
+    high heart rate in context of exercise or something...
+
+paper setup
+    sander has a paper about writing papers that could be interesting

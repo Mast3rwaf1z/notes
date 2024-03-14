@@ -1,0 +1,9 @@
+we pitched the idea
+
+desktop app?
+journaling data?
+consider when we "nudge" the user, telling a user just before an exam that they should go to bed early might be annoying?
+user evaluation for tests
+how do we validate this system if we use dummy data
+research paper
+

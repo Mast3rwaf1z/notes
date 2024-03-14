@@ -1,0 +1,16 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?me1 ?me2 WHERE {
+  ?me1 rdf:type ex:MusicalEvent ;
+       ex:date ?date1 .
+  ?me2 rdf:type ex:MusicalEvent ;
+       ex:date ?date2
+  FILTER (?date1 < ?date2)  
+  
+  FILTER NOT EXISTS {
+    ?mex rdf:type ex:MusicalEvent ;
+         ex:date ?datex .
+    FILTER (?date1 < ?datex && ?datex < ?date2)
+  }
+}

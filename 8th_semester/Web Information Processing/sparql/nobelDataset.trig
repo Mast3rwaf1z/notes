@@ -1,0 +1,65 @@
+@prefix : <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/G-SP> {
+  :NPL1901 :winner :SPrudhomme .
+  :SPrudhomme :country :France .
+}
+
+<http://example.org/G-TM> {
+:NPL1902 :winner :TMommsen .
+:TMommsen :country :Germany .
+}
+
+<http://example.org/G-BB> {
+  :NPL1903 :winner :BBjørnson .
+  :BBjørnson :country :Norway .
+}
+
+<http://example.org/G-FM> {
+  :NPL1904 :winner :FMistral .
+  :FMistral :country :France .
+}
+
+<http://example.org/G-JE> {
+  :NPL1904 :winner :JEchegaray .
+  :JEchegaray :country :Spain .
+}
+
+<http://example.org/G-FPW> {
+  :France :war :FrancoPrussianWar .
+
+  :Germany :war :FrancoPrussianWar .
+
+  :FrancoPrussianWar :combatant :SPrudhomme ;
+                     :end "1871"^^xsd:gYear .
+}
+
+
+:NPL1901 :next :NPL1902 ;
+		 :year "1901"^^xsd:gYear ;
+		 rdf:type :NobelPrizeLiterature .
+		 
+:NPL1902 :next :NPL1903 ;
+         :prev :NPL1901 ;
+		 :year "1902"^^xsd:gYear ;
+		 rdf:type :NobelPrizeLiterature .
+		 
+:NPL1903 :next :NPL1904 ;
+         :prev :NPL1902 ;
+		 :year "1903"^^xsd:gYear ;
+		 rdf:type :NobelPrizeLiterature .
+
+:NPL1904 :prev :NPL1903 ;        
+		 :year "1904"^^xsd:gYear ;
+		 rdf:type :NobelPrizeLiterature .		 
+		 
+:NobelPrizeLiterature :maxWinners "2"^^xsd:integer ;
+                      :rdfs:subClassOf :NobelPrize ;
+					  rdfs:label "Nobel in Literature"@en, "Nobel de Literatura"@es .
+					  
+:NobelPrize rdfs:label "Nobel"@en .
+
+				   

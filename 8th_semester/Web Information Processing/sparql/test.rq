@@ -1,0 +1,2 @@
+select distinct ?war
+where {}

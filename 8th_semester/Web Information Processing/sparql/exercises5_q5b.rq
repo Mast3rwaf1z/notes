@@ -1,0 +1,9 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?c (count(?i) AS ?num)
+WHERE {
+  ?i rdf:type ?c .
+}
+GROUP BY ?c

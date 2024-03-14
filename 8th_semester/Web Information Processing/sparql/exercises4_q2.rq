@@ -1,0 +1,10 @@
+PREFIX ex: <http://example.org/> 
+SELECT DISTINCT ?winner 
+WHERE {
+  ?npl a ex:NobelPrizeLiterature ; ex:winner ?winner .
+  { ?npl ex:prev ?other }
+  UNION
+  { ?npl ex:next ?other }
+  ?other ex:winner ex:BBjørnson
+  
+}
