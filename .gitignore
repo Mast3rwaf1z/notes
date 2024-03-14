@@ -2,3 +2,5 @@
 out
 log
 .envrc
+__pycache__
+incremental_db
